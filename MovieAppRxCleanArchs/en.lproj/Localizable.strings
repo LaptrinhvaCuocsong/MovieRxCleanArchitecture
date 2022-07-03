@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  MovieAppRxCleanArchs
+
+  Created by hungnm98 on 12/06/2022.
+  
+*/
+
+// MARK: - Tabbar
+"tabbar_movieList" = "Movies";
+"tabbar_movieFavorite" = "Favorites";
+"tabbar_setting" = "Setting";
+"tabbar_about" = "About";
+
+// MARK: - MovieList
+"movieList_title" = "Popular Movies";
+
+// MARK: - MovieFavorite
+"movieFavorite_title" = "Favorites";
+
+// MARK: - Setting
+"setting_title" = "Settings";
+
+// MARK: - About
+"abiut_title" = "About";
