@@ -18,4 +18,8 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
     public func makeMoviesUseCase() -> Domain.MoviesUseCase {
         return MoviesUseCase(network: networkProvider.makeMoviesNetwork())
     }
+    
+    public func makeMovieConfigurationUseCase() -> Domain.MovieConfigurationUseCase {
+        return MovieConfigurationUseCase(network: networkProvider.makeMovieConfigurationNetwork())
+    }
 }

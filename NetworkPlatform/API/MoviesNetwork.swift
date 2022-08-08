@@ -11,13 +11,15 @@ import RxSwift
 
 class MoviesNetwork {
     private let network: Network<Movies>
+    private let decoder = JSONDecoder()
 
     init(network: Network<Movies>) {
         self.network = network
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
     }
 
-    func popularMovies() -> Observable<APIResult<Movies>> {
-        let request = RequestBuilder.getPopularMovies
-        return network.execute(request: request)
+    func popularMovies(param: PopularMovieParams) -> Observable<Result<Movies, Error>> {
+        let request = RequestBuilder.v3FetchPopularMovies(param)
+        return network.execute(request: request, decoder: decoder)
     }
 }

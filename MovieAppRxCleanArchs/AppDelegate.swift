@@ -8,16 +8,27 @@
 import CoreData
 import SideMenuSwift
 import UIKit
+import SVProgressHUD
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         setupSideMenu()
+        setupHUD()
         return true
     }
 
     // MARK: - Private methods
+
+    private func setupHUD() {
+        window = UIWindow(frame: UIScreen.main.bounds)
+        SVProgressHUD.setDefaultStyle(.custom)
+        SVProgressHUD.setDefaultMaskType(.clear)
+        SVProgressHUD.setForegroundColor(Colors.tintColor)
+    }
 
     private func setupSideMenu() {
         SideMenuController.preferences.basic.menuWidth = UIScreen.mainWidth * 0.8

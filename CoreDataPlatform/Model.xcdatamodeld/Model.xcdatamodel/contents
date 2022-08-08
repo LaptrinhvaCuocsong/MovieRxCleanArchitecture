@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="20086" systemVersion="21F79" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDImageMovieConfiguration" representedClassName="CDImageMovieConfiguration" syncable="YES">
+        <attribute name="backdropSizes" optional="YES" attributeType="Transformable"/>
+        <attribute name="baseURL" optional="YES" attributeType="String"/>
+        <attribute name="logoSizes" optional="YES" attributeType="Transformable"/>
+        <attribute name="posterSizes" optional="YES" attributeType="Transformable"/>
+        <attribute name="profileSizes" optional="YES" attributeType="Transformable"/>
+        <attribute name="secureBaseURL" optional="YES" attributeType="String"/>
+        <attribute name="stillSizes" optional="YES" attributeType="Transformable"/>
+        <attribute name="uid" optional="YES" attributeType="String"/>
+        <relationship name="movieConfiguration" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="MovieConfiguration" inverseName="images" inverseEntity="MovieConfiguration"/>
+    </entity>
+    <entity name="MovieConfiguration" representedClassName="MovieConfiguration" syncable="YES">
+        <attribute name="uid" optional="YES" attributeType="String"/>
+        <relationship name="images" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CDImageMovieConfiguration" inverseName="movieConfiguration" inverseEntity="CDImageMovieConfiguration"/>
+    </entity>
+    <elements>
+        <element name="CDImageMovieConfiguration" positionX="-63" positionY="-18" width="128" height="164"/>
+        <element name="MovieConfiguration" positionX="-54" positionY="45" width="128" height="59"/>
+    </elements>
+</model>

@@ -31,6 +31,13 @@ extension URLRequest {
         return command.joined(separator: " \\\n\t")
     }
 
+    func log() {
+        print("\n---------------REQUEST---------------")
+        print("✎ CURL:")
+        print(curlString)
+        print("-------------------------------------\n")
+    }
+
     mutating func encode(with parameters: Parameters?) {
         guard let url = self.url,
               var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),

@@ -7,14 +7,17 @@
 
 import Foundation
 
+let mainBundle = Bundle(identifier: "com.hungnm.NetworkPlatform")
+
 struct APIConstant {
     static let apiErrorMessageCommon: String = "Request error\n Please try again!"
     
     static var movieAPIKey: String {
-        return (Bundle.main.infoDictionary?["MOVIE_API_KEY"] as? String) ?? ""
+        return mainBundle?.infoDictionary?["MOVIE_API_KEY"] as? String ?? ""
     }
 
     static var movieEndPoint: String {
-        return (Bundle.main.infoDictionary?["MOVIE_DB_ENDPOINT"] as? String) ?? ""
+        let val = mainBundle?.infoDictionary?["MOVIE_DB_ENDPOINT"] as? String
+        return (val ?? "").replacingOccurrences(of: "\\", with: "")
     }
 }

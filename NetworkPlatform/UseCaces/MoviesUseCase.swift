@@ -16,7 +16,8 @@ class MoviesUseCase: Domain.MoviesUseCase {
         self.network = network
     }
     
-    func popularMovies() -> Observable<Result<Movies, Error>> {
-        return network.popularMovies().map({ $0.mapToResult() })
+    func popularMovies(input: Encodable) -> Observable<Result<Movies, Error>> {
+        let input = (input as? PopularMovieParams) ?? PopularMovieParams(page: 1)
+        return network.popularMovies(param: input)
     }
 }

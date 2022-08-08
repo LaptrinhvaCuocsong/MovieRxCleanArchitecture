@@ -23,3 +23,14 @@
 
 // MARK: - About
 "abiut_title" = "About";
+
+// MARK: - Button
+"btn_ok" = "OK";
+"btn_retry" = "Retry";
+"btn_cancel" = "Cancel";
+"btn_done" = "Done";
+
+// MARK: - Label
+"overview_label" = "Overview:";
+"release_date_label" = "Release date:";
+"rating_label" = "Rating:";

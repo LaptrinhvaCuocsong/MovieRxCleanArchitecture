@@ -12,6 +12,18 @@ struct Colors {
         return color(lightModeColor: UIColor(hex: 0x0984e3))
     }
     
+    static var blackColor: UIColor {
+        return color(lightModeColor: UIColor(hex: 0x2d3436))
+    }
+    
+    static var redColor: UIColor {
+        return color(lightModeColor: UIColor(hex: 0xd63031))
+    }
+    
+    static var greyColor: UIColor {
+        return color(lightModeColor: UIColor(hex: 0x636e72))
+    }
+    
     static var defaultScreenBackgroundColor: UIColor {
         return color(lightModeColor: UIColor.white)
     }

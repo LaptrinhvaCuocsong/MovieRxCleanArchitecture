@@ -11,8 +11,16 @@ class BaseTabVC: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Customize tabbar
-        UITabBar.appearance().backgroundColor = Colors.tintColor
+        UITabBar.appearance().tintColor = UIColor.white
         UITabBar.appearance().unselectedItemTintColor = Colors.tabbarItemTitleColor(isSelected: false)
+        UITabBar.appearance().barTintColor = Colors.tintColor
+        UITabBar.appearance().backgroundColor = Colors.tintColor
+        let appearance = UITabBarAppearance()
+        appearance.configureWithTransparentBackground()
+        UITabBar.appearance().standardAppearance = appearance
+        if #available(iOS 15.0, *) {
+            UITabBar.appearance().scrollEdgeAppearance = appearance
+        }
         UITabBarItem.appearance()
             .setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Colors.tabbarItemTitleColor(isSelected: true),
                                      NSAttributedString.Key.font: Fonts.Roboto.medium(with: 10)],

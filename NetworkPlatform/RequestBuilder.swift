@@ -5,52 +5,66 @@
 //  Created by hungnm98 on 22/06/2022.
 //
 
-import Foundation
 import Alamofire
+import Foundation
+import Utils
 
 enum RequestBuilderError: Error {
     case urlInvalid
 }
 
 enum RequestBuilder: URLRequestConvertible {
-    case getPopularMovies
-    
+    case v3FetchPopularMovies(PopularMovieParams)
+    case v3FetchMovieConfiguration
+
     var endPoint: String {
         return APIConstant.movieEndPoint
     }
-    
-    var path: String {
-        switch self {
-        case .getPopularMovies:
-            return "movie/popular"
+
+    enum Version: String {
+        case v3 = "3"
+
+        func path(_ path: String) -> String {
+            return rawValue + "/" + path
         }
     }
-    
+
+    var path: String {
+        switch self {
+        case .v3FetchPopularMovies:
+            return Version.v3.path("movie/popular")
+        case .v3FetchMovieConfiguration:
+            return Version.v3.path("configuration")
+        }
+    }
+
     var headers: [String: String]? {
         return ["Content-Type": "application/json"]
     }
-    
+
     var method: HTTPMethod {
         switch self {
-        case .getPopularMovies:
+        case .v3FetchPopularMovies:
+            return .get
+        case .v3FetchMovieConfiguration:
             return .get
         }
     }
-    
+
     var parameters: Parameters? {
         switch self {
-        case .getPopularMovies:
-            return nil
+        case let .v3FetchPopularMovies(param):
+            return param.toDictionary()
+        default: return nil
         }
     }
-    
+
     var body: Parameters? {
         switch self {
-        case .getPopularMovies:
-            return nil
+        default: return nil
         }
     }
-    
+
     func asURLRequest() throws -> URLRequest {
         let absolutePath = endPoint + "/" + path
         guard let url = URL(string: absolutePath) else {
@@ -59,7 +73,9 @@ enum RequestBuilder: URLRequestConvertible {
         var request = URLRequest(url: url)
         request.httpMethod = method.rawValue
         request.allHTTPHeaderFields = headers
-        request.encode(with: parameters)
+        var params = parameters ?? [:]
+        params["api_key"] = APIConstant.movieAPIKey
+        request.encode(with: params)
         if let body = body {
             request.httpBody = try? JSONSerialization.data(withJSONObject: body)
         }

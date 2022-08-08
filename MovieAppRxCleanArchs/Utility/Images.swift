@@ -46,6 +46,14 @@ struct Images {
         static var icGrid: UIImage? {
             return Images.image(lightModeNamed: "ic_grid")
         }
+        
+        static var icUnFavoriteMovie: UIImage? {
+            return Images.image(lightModeNamed: "ic_star_small_blue")
+        }
+        
+        static var icFavoriteMovie: UIImage? {
+            return Images.image(lightModeNamed: "ic_star_small_yellow")
+        }
     }
 
     private static func image(lightModeNamed: String, darkModeNamed: String? = nil) -> UIImage? {

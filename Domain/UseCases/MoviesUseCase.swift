@@ -9,5 +9,5 @@ import Foundation
 import RxSwift
 
 public protocol MoviesUseCase {
-    func popularMovies() -> Observable<Result<Movies, Error>>
+    func popularMovies(input: Encodable) -> Observable<Result<Movies, Error>>
 }

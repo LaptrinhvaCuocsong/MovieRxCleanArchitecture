@@ -7,11 +7,12 @@
 
 import Foundation
 
-enum APIError: Error {
+public enum APIError: Error {
     case decodingError
     case httpError(Int, String)
     case unknown(String)
     case noInternet
+    case cancel
     
     public var description: String {
         switch self {
@@ -22,7 +23,9 @@ enum APIError: Error {
         case let .unknown(value):
             return value
         case .noInternet:
-            return ""
+            return "No internet"
+        case .cancel:
+            return "Request is cancelled"
         }
     }
 }

@@ -49,4 +49,36 @@ struct Strings {
             return "about_title".localized()
         }
     }
+
+    struct Button {
+        static var ok: String {
+            return "btn_ok".localized()
+        }
+
+        static var cancel: String {
+            return "btn_cancel".localized()
+        }
+
+        static var retry: String {
+            return "btn_retry".localized()
+        }
+
+        static var done: String {
+            return "btn_done".localized()
+        }
+    }
+
+    struct Label {
+        static var overview: String {
+            return "overview_label".localized()
+        }
+
+        static var releaseDate: String {
+            return "release_date_label".localized()
+        }
+
+        static var rating: String {
+            return "rating_label".localized()
+        }
+    }
 }

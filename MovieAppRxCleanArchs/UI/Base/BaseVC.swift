@@ -12,7 +12,7 @@ class BaseVC: UIViewController {
     var sideMenuVC: UIViewController? {
         didSet {
             guard let menu = sideMenuVC else { return }
-            Application.shared.baseSideMenu.menuViewController = menu
+            Application.shared.baseSideMenu?.menuViewController = menu
         }
     }
     

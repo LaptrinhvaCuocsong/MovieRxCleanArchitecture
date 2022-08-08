@@ -10,5 +10,5 @@
 
 #include "Pods/Target Support Files/Pods-NetworkPlatform/Pods-NetworkPlatform.release.xcconfig"
 
-MOVIE_DB_ENDPOINT = https://api.themoviedb.org/3
+MOVIE_DB_ENDPOINT = https:\/\/api.themoviedb.org
 MOVIE_API_KEY = c6bcf9b396562b60515b1e6edfebda90

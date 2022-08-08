@@ -12,4 +12,8 @@ final class NetworkProvider {
     func makeMoviesNetwork() -> MoviesNetwork {
         return MoviesNetwork(network: Network<Movies>())
     }
+    
+    func makeMovieConfigurationNetwork() -> MovieConfigurationNetwork {
+        return MovieConfigurationNetwork(network: Network<MovieConfiguration>())
+    }
 }

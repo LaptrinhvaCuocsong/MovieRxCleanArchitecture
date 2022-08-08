@@ -5,30 +5,33 @@
 //  Created by hungnm98 on 22/05/2022.
 //
 
+import Domain
 import Foundation
 import NetworkPlatform
-import Domain
 import UIKit
 
 final class Application {
     static let shared = Application()
-    weak var baseSideMenu: BaseSideMenuVC!
-    let networkUseCaseProvider: Domain.UseCaseProvider
+    weak var window: UIWindow?
+    weak var baseSideMenu: BaseSideMenuVC?
 
     // UseCases
 
     private init() {
-        networkUseCaseProvider = NetworkPlatform.UseCaseProvider()
     }
 
-    func configMainInterface(in window: UIWindow) {
+    func configSplashInterface() {
+        let splashVC = SplashVC(viewModel: SplashVM(coordinator: SplashCoordinator(navigationController: nil)))
+        window?.rootViewController = splashVC
+        window?.makeKeyAndVisible()
+    }
+
+    func configMainInterface() {
         let movieListNC = BaseNC()
         movieListNC.tabBarItem = UITabBarItem(title: Strings.Tabbar.movieList,
                                               image: Images.Tabbar.icMovieListTabbar(isSelected: false),
                                               selectedImage: Images.Tabbar.icMovieListTabbar(isSelected: true))
-        let movieListVC = MovieListVC(viewModel: MovieListVM(dataSource: DefaultMovieListDataSource(),
-                                                             coordinator: MovieListCoordinator(navigationController: movieListNC),
-                                                             moviesUseCase: networkUseCaseProvider.makeMoviesUseCase()))
+        let movieListVC = MovieListVC(viewModel: MovieListVM(coordinator: MovieListCoordinator(navigationController: movieListNC)))
         movieListNC.pushViewController(movieListVC, animated: false)
 
         let movieFavoriteNC = BaseNC()
@@ -58,7 +61,7 @@ final class Application {
         let baseSideMenuVC = BaseSideMenuVC(contentViewController: tabbarVC, menuViewController: UIViewController())
         baseSideMenu = baseSideMenuVC
 
-        window.rootViewController = baseSideMenuVC
-        window.makeKeyAndVisible()
+        window?.rootViewController = baseSideMenuVC
+        window?.makeKeyAndVisible()
     }
 }

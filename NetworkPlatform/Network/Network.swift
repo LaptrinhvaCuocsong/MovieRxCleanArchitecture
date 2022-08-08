@@ -8,35 +8,47 @@
 import Alamofire
 import Domain
 import Foundation
-import RxAlamofire
 import RxSwift
 
 final class Network<T: Decodable> {
     private let scheduler: ConcurrentDispatchQueueScheduler
+    private let sessionManager: Session
 
     init() {
         scheduler = ConcurrentDispatchQueueScheduler(qos: DispatchQoS(qosClass: DispatchQoS.QoSClass.background, relativePriority: 1))
+        let sessionConfiguration = URLSessionConfiguration.default
+        sessionConfiguration.requestCachePolicy = .reloadIgnoringLocalCacheData
+        sessionConfiguration.timeoutIntervalForRequest = 30
+        sessionManager = Alamofire.Session(configuration: sessionConfiguration)
     }
 
-    func execute(request: URLRequestConvertible) -> Observable<APIResult<T>> {
-        return RxAlamofire
-            .requestData(request)
-            .debug()
-            .observe(on: scheduler)
-            .map { response, data -> APIResult<T> in
-                if 200 ... 299 ~= response.statusCode {
-                    if let model = try? JSONDecoder().decode(T.self, from: data) {
-                        return APIResult.success(model)
-                    } else {
-                        return APIResult.failure(APIError.decodingError)
-                    }
-                } else {
-                    if let statusCode = HTTPStatusCode(rawValue: response.statusCode) {
-                        return APIResult.failure(APIError.httpError(statusCode.rawValue, statusCode.description))
-                    } else {
-                        return APIResult.failure(APIError.httpError(response.statusCode, APIConstant.apiErrorMessageCommon))
+    func execute(request: URLRequestConvertible, decoder: JSONDecoder) -> Observable<Result<T, Error>> {
+        request.urlRequest?.log()
+        return Observable.create { [unowned self] e in
+            sessionManager.request(request).validate()
+                .response { response in
+                    response.response?.log(data: response.data)
+                    switch response.result {
+                    case let .success(data):
+                        guard let data = data else {
+                            e.onNext(Result.failure(APIError.unknown(APIConstant.apiErrorMessageCommon)))
+                            return
+                        }
+                        do {
+                            let model = try decoder.decode(T.self, from: data)
+                            e.onNext(Result.success(model))
+                        } catch {
+                            e.onNext(Result.failure(APIError.decodingError))
+                        }
+                    case let .failure(error):
+                        if (error as NSError).code == NSURLErrorCancelled {
+                            e.onNext(Result.failure(APIError.cancel))
+                        } else {
+                            e.onNext(Result.failure(APIError.httpError(error.responseCode ?? -1, error.localizedDescription)))
+                        }
                     }
                 }
-            }
+            return Disposables.create {}
+        }
     }
 }
