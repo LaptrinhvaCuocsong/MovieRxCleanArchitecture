@@ -18,7 +18,7 @@ protocol CoreDataRepresentable {
 }
 
 extension CoreDataRepresentable {
-    func sync(in context: NSManagedObjectContext) -> Observable<CoreDataType> {
+    func sync(in context: NSManagedObjectContext) -> Observable<Result<CoreDataType, Error>> {
         return context.rx.sync(entity: self, update: update)
     }
 }

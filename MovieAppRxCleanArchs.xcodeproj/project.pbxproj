@@ -88,6 +88,11 @@
 		EF687F3B288D40DD0046F359 /* MovieListHalfWidthCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF687F39288D40DD0046F359 /* MovieListHalfWidthCell.swift */; };
 		EF687F3C288D40DD0046F359 /* MovieListHalfWidthCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF687F3A288D40DD0046F359 /* MovieListHalfWidthCell.xib */; };
 		EF71322E28705A5700150571 /* AboutDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF71322D28705A5700150571 /* AboutDataSource.swift */; };
+		EF772C6328A1624000266088 /* CDError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF772C6228A1624000266088 /* CDError.swift */; };
+		EF772C6528A16A5100266088 /* Result+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF772C6428A16A5100266088 /* Result+Ext.swift */; };
+		EF772C6828A171F400266088 /* MovieConfigurationRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF772C6728A171F400266088 /* MovieConfigurationRepository.swift */; };
+		EF772C6B28A172A700266088 /* MovieConfigurationRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF772C6A28A172A700266088 /* MovieConfigurationRepositoryImpl.swift */; };
+		EF772C6D28A1743C00266088 /* NetworkUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF772C6C28A1743C00266088 /* NetworkUtility.swift */; };
 		EF7BEE7828A036C30045D547 /* MovieConfigurationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF7BEE7728A036C30045D547 /* MovieConfigurationUseCase.swift */; };
 		EF82C2EE28704CF40069BA72 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF82C2ED28704CF40069BA72 /* ProfileCoordinator.swift */; };
 		EF82C2F0287057B90069BA72 /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF82C2EF287057B90069BA72 /* ProfileDataSource.swift */; };
@@ -277,6 +282,11 @@
 		EF687F39288D40DD0046F359 /* MovieListHalfWidthCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListHalfWidthCell.swift; sourceTree = "<group>"; };
 		EF687F3A288D40DD0046F359 /* MovieListHalfWidthCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListHalfWidthCell.xib; sourceTree = "<group>"; };
 		EF71322D28705A5700150571 /* AboutDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDataSource.swift; sourceTree = "<group>"; };
+		EF772C6228A1624000266088 /* CDError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDError.swift; sourceTree = "<group>"; };
+		EF772C6428A16A5100266088 /* Result+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Ext.swift"; sourceTree = "<group>"; };
+		EF772C6728A171F400266088 /* MovieConfigurationRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConfigurationRepository.swift; sourceTree = "<group>"; };
+		EF772C6A28A172A700266088 /* MovieConfigurationRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConfigurationRepositoryImpl.swift; sourceTree = "<group>"; };
+		EF772C6C28A1743C00266088 /* NetworkUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtility.swift; sourceTree = "<group>"; };
 		EF7BEE7728A036C30045D547 /* MovieConfigurationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConfigurationUseCase.swift; sourceTree = "<group>"; };
 		EF82C2ED28704CF40069BA72 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		EF82C2EF287057B90069BA72 /* ProfileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
@@ -458,6 +468,7 @@
 				EF15E7D9289AE009005966CD /* RxCoreData */,
 				EF15E7E0289AE012005966CD /* UseCases */,
 				EF15E7BC289ADF75005966CD /* CoreDataPlatform.h */,
+				EF772C6228A1624000266088 /* CDError.swift */,
 				EF15E7C5289ADF87005966CD /* Model.xcdatamodeld */,
 			);
 			path = CoreDataPlatform;
@@ -637,6 +648,23 @@
 			path = MovieListHalfWidthCell;
 			sourceTree = "<group>";
 		};
+		EF772C6628A171D500266088 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				EF772C6928A1729200266088 /* Impl */,
+				EF772C6728A171F400266088 /* MovieConfigurationRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		EF772C6928A1729200266088 /* Impl */ = {
+			isa = PBXGroup;
+			children = (
+				EF772C6A28A172A700266088 /* MovieConfigurationRepositoryImpl.swift */,
+			);
+			path = Impl;
+			sourceTree = "<group>";
+		};
 		EF8722E928719D8A0074B54F /* Cells */ = {
 			isa = PBXGroup;
 			children = (
@@ -681,6 +709,7 @@
 				EF9938FF2839F1490077B3A9 /* Utility */,
 				EF9938FE2839F13E0077B3A9 /* Common */,
 				EFB0660F289F55A800C12AA8 /* ServiceLocator */,
+				EF772C6628A171D500266088 /* Repository */,
 				EF02CC33284E5670007FF7FF /* UI */,
 				EF2D89B52858E36C0070B5C8 /* Resource */,
 				EF9938BE2839EB7E0077B3A9 /* AppDelegate.swift */,
@@ -796,6 +825,7 @@
 				EF2D89BF2858E3A30070B5C8 /* Fonts.swift */,
 				EF2D89C12858E5590070B5C8 /* Constant.swift */,
 				EF27B9C2288CF5D50064611D /* Alert.swift */,
+				EF772C6C28A1743C00266088 /* NetworkUtility.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -859,6 +889,7 @@
 			isa = PBXGroup;
 			children = (
 				EFF2BC53289192780055116A /* Codable+Ext.swift */,
+				EF772C6428A16A5100266088 /* Result+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1288,6 +1319,7 @@
 				EF15E7F0289AE6D7005966CD /* CDMovieConfiguration+CoreDataProperties.swift in Sources */,
 				EF15E7E6289AE2FB005966CD /* RepositoryProvider.swift in Sources */,
 				EF15E7CF289ADFD6005966CD /* Persistable.swift in Sources */,
+				EF772C6328A1624000266088 /* CDError.swift in Sources */,
 				EF15E7E9289AE5B8005966CD /* CDImageMovieConfiguration+CoreDataClass.swift in Sources */,
 				EF15E7F4289AEB2C005966CD /* CDMovieConfiguration+Ext.swift in Sources */,
 				EF15E7E4289AE012005966CD /* UseCaseProvider.swift in Sources */,
@@ -1343,10 +1375,13 @@
 				EF9939082839F1B10077B3A9 /* Observable+Ext.swift in Sources */,
 				EF27B9BD288CF13A0064611D /* UITableView+Ext.swift in Sources */,
 				EF82C2EE28704CF40069BA72 /* ProfileCoordinator.swift in Sources */,
+				EF772C6D28A1743C00266088 /* NetworkUtility.swift in Sources */,
 				EF27B9C3288CF5D50064611D /* Alert.swift in Sources */,
 				EF9939052839F18F0077B3A9 /* Reusable.swift in Sources */,
 				EF2D89C02858E3A30070B5C8 /* Fonts.swift in Sources */,
+				EF772C6828A171F400266088 /* MovieConfigurationRepository.swift in Sources */,
 				EF2760CC28524BED00E77BCA /* SettingCoordinator.swift in Sources */,
+				EF772C6B28A172A700266088 /* MovieConfigurationRepositoryImpl.swift in Sources */,
 				EFFE49C32871F35E0081C1C5 /* Result+Ext.swift in Sources */,
 				EF9938BF2839EB7E0077B3A9 /* AppDelegate.swift in Sources */,
 				EF2760DA28524C7700E77BCA /* BaseNC.swift in Sources */,
@@ -1411,6 +1446,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF772C6528A16A5100266088 /* Result+Ext.swift in Sources */,
 				EFF2BC54289192780055116A /* Codable+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

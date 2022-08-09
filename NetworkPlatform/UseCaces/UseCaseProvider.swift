@@ -15,11 +15,11 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
         self.networkProvider = NetworkProvider()
     }
     
-    public func makeMoviesUseCase() -> Domain.MoviesUseCase {
+    public func makeMoviesUseCase() -> Domain.MoviesUseCase? {
         return MoviesUseCase(network: networkProvider.makeMoviesNetwork())
     }
     
-    public func makeMovieConfigurationUseCase() -> Domain.MovieConfigurationUseCase {
+    public func makeMovieConfigurationUseCase() -> Domain.MovieConfigurationUseCase? {
         return MovieConfigurationUseCase(network: networkProvider.makeMovieConfigurationNetwork())
     }
 }

@@ -6,25 +6,12 @@
 //  Copyright © 2022 Tripi. All rights reserved.
 //
 
-import Foundation
-import Domain
-import NetworkPlatform
 import CoreData
+import Domain
+import Foundation
+import NetworkPlatform
 
 class RepositoryModule: DIModule {
-    
-    
     func registerServices(serviceLocator: ServiceLocator) {
-        serviceLocator.registerLazySingleton(UseCaseProvider.self, name: "NetworkPlatform.UseCaseProvider") { _ in
-            return NetworkPlatform.UseCaseProvider()
-        }
-        
-//        serviceLocator.registerLazySingleton(UseCaseProvider.self, name: "CoreDataPlatform.UseCaseProvider") { _ in
-//            return Netwo
-//        }
-//
-//        serviceLocator.registerLazySingleton(MoviesUseCase.self, name: "NetworkPlatform.MovieUseCase") { _ in
-//            <#code#>
-//        }
     }
 }

@@ -7,12 +7,24 @@ extension ObservableType {
     }
 }
 
-extension Observable where Element: Sequence, Element.Iterator.Element: DomainConvertibleType {
-    typealias DomainType = Element.Iterator.Element.DomainType
+extension Result where Success: Sequence, Success.Element: DomainConvertibleType {
+    func mapToDomain() -> Result<[Success.Element.DomainType], Error> {
+        switch self {
+        case let .success(success):
+            return .success(success.mapToDomain())
+        case let .failure(failure):
+            return .failure(failure)
+        }
+    }
+}
 
-    func mapToDomain() -> Observable<[DomainType]> {
-        return map { sequence -> [DomainType] in
-            sequence.mapToDomain()
+extension Result where Success: DomainConvertibleType {
+    func mapToDomain() -> Result<Success.DomainType, Error> {
+        switch self {
+        case let .success(success):
+            return .success(success.asDomain())
+        case let .failure(failure):
+            return .failure(failure)
         }
     }
 }

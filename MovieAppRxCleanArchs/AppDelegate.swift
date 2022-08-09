@@ -7,8 +7,8 @@
 
 import CoreData
 import SideMenuSwift
-import UIKit
 import SVProgressHUD
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         setupSideMenu()
         setupHUD()
+        NetworkUtility.shared.start()
         return true
     }
 
