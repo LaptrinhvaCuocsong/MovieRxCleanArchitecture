@@ -14,4 +14,11 @@ extension UIImageView {
             completion?(image)
         }
     }
+
+    func sdSetMovieImage(path: String, fileSizeType: MovieFileSizeType?, completion: ((UIImage?) -> Void)? = nil) {
+        let url = Helper.movieImageUrl(size: frame.size, fileSizeType: fileSizeType, path: path)
+        sd_setImage(with: url, placeholderImage: nil, options: []) { image, _, _, _ in
+            completion?(image)
+        }
+    }
 }

@@ -2,10 +2,12 @@ import CoreData
 import Foundation
 
 final class CoreDataStack {
-    private let storeCoordinator: NSPersistentStoreCoordinator
-    let context: NSManagedObjectContext
+    static let shared = CoreDataStack()
 
-    public init() {
+    let context: NSManagedObjectContext
+    private let storeCoordinator: NSPersistentStoreCoordinator
+
+    private init() {
         let bundle = Bundle(for: CoreDataStack.self)
         guard let url = bundle.url(forResource: "Model", withExtension: "momd"),
               let model = NSManagedObjectModel(contentsOf: url) else {
@@ -14,14 +16,15 @@ final class CoreDataStack {
         storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = storeCoordinator
-        migrateStore()
+        migrateStore(version: 1)
     }
 
-    private func migrateStore() {
+    private func migrateStore(version: Int) {
         guard let url = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).last else {
             fatalError()
         }
-        let storeUrl = url.appendingPathComponent("Model.sqlite")
+        let storeUrl = url.appendingPathComponent("Model_v\(version).sqlite")
+        print("📂📂📂 storeUrl = \(storeUrl.absoluteString)")
         do {
             try storeCoordinator.addPersistentStore(ofType: NSSQLiteStoreType,
                                                     configurationName: nil,

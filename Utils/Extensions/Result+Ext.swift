@@ -25,4 +25,13 @@ public extension Result {
             return failure
         }
     }
+
+    func to<T>(tranform: (Success) -> T) -> Result<T, Failure> {
+        switch self {
+        case let .success(success):
+            return Result<T, Failure>.success(tranform(success))
+        case let .failure(failure):
+            return Result<T, Failure>.failure(failure)
+        }
+    }
 }

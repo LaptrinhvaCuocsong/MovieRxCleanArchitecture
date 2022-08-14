@@ -18,16 +18,21 @@ final class MovieConfigurationUseCase<Repository>: Domain.MovieConfigurationUseC
     }
 
     func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration, Error>> {
-        return repository.query(with: nil, sortDescriptors: nil).map { result in
-            switch result {
-            case let .success(list):
-                guard let first = list.first else {
-                    return Result.failure(CDError.modelNotFound)
+        return repository.query(predicate: nil, sortDescriptors: nil)
+            .map { result in
+                switch result {
+                case let .success(list):
+                    guard let first = list.first else {
+                        return Result.failure(CDError.modelNotFound)
+                    }
+                    return Result.success(first)
+                case let .failure(error):
+                    return Result.failure(error)
                 }
-                return Result.success(first)
-            case let .failure(error):
-                return Result.failure(error)
             }
-        }
+    }
+
+    func saveMovieConfiguration(_ movieConfiguration: MovieConfiguration) -> Observable<Result<Bool, Error>> {
+        return repository.save(entity: movieConfiguration)
     }
 }

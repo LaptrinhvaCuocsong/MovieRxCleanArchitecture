@@ -6,7 +6,7 @@ import Utils
 
 protocol AbstractRepository {
     associatedtype T
-    func query(with predicate: NSPredicate?,
+    func query(predicate: NSPredicate?,
                sortDescriptors: [NSSortDescriptor]?) -> Observable<Result<[T], Error>>
     func save(entity: T) -> Observable<Result<Bool, Error>>
     func delete(entity: T) -> Observable<Result<Bool, Error>>
@@ -21,7 +21,7 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository where T == 
         scheduler = ContextScheduler(context: context)
     }
 
-    func query(with predicate: NSPredicate? = nil,
+    func query(predicate: NSPredicate? = nil,
                sortDescriptors: [NSSortDescriptor]? = nil) -> Observable<Result<[T], Error>> {
         let request = T.CoreDataType.fetchRequest()
         request.predicate = predicate

@@ -24,8 +24,8 @@ extension CDImageMovieConfiguration {
 
 extension CDImageMovieConfiguration: DomainConvertibleType {
     func asDomain() -> MovieConfiguration.Images {
-        return MovieConfiguration.Images(baseURL: baseURL,
-                                         secureBaseURL: secureBaseURL,
+        return MovieConfiguration.Images(baseUrl: baseUrl,
+                                         secureBaseUrl: secureBaseUrl,
                                          backdropSizes: backdropSizes,
                                          logoSizes: logoSizes,
                                          posterSizes: posterSizes,
@@ -44,12 +44,13 @@ extension MovieConfiguration.Images: CoreDataRepresentable {
     typealias CoreDataType = CDImageMovieConfiguration
 
     var uid: String {
-        return ""
+        return String(describing: CDImageMovieConfiguration.self)
     }
 
     func update(entity: CDImageMovieConfiguration) {
-        entity.baseURL = baseURL
-        entity.secureBaseURL = secureBaseURL
+        entity.uid = uid
+        entity.baseUrl = baseUrl
+        entity.secureBaseUrl = secureBaseUrl
         entity.backdropSizes = backdropSizes
         entity.logoSizes = logoSizes
         entity.posterSizes = posterSizes

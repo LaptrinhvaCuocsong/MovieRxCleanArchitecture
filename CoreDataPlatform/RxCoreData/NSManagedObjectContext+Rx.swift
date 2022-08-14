@@ -11,16 +11,15 @@ extension Reactive where Base: NSManagedObjectContext {
      - parameter cacheName: the name of the file used to cache section information; defaults to `nil`
      - returns: An `Observable` array of `NSManagedObjects` objects that can be bound to a table view.
      */
-    func entities<T: NSFetchRequestResult>(fetchRequest: NSFetchRequest<T>,
-                                           sectionNameKeyPath: String? = nil,
-                                           cacheName: String? = nil) -> Observable<Result<[T], Error>> {
+    func entities<T: NSFetchRequestResult>(fetchRequest: NSFetchRequest<T>) -> Observable<Result<[T], Error>> {
         return Observable<Result<[T], Error>>.create { observer in
-
-            let observerAdapter = FetchedResultsControllerEntityObserver(observer: observer, fetchRequest: fetchRequest, managedObjectContext: self.base, sectionNameKeyPath: sectionNameKeyPath, cacheName: cacheName)
-
-            return Disposables.create {
-                observerAdapter.dispose()
+            do {
+                let result = try self.base.fetch(fetchRequest)
+                observer.onNext(.success(result))
+            } catch {
+                observer.onNext(.failure(error))
             }
+            return Disposables.create()
         }
     }
 

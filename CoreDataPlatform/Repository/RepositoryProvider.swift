@@ -9,11 +9,7 @@ import Domain
 import Foundation
 
 final class RepositoryProvider {
-    private let coreDataStack: CoreDataStack
-
-    init() {
-        coreDataStack = CoreDataStack()
-    }
+    private let coreDataStack = CoreDataStack.shared
 
     func makeMovieConfigurationRepository() -> Repository<MovieConfiguration> {
         return Repository<MovieConfiguration>(context: coreDataStack.context)

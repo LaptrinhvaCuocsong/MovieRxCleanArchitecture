@@ -11,12 +11,16 @@ import RxSwift
 
 class MovieConfigurationUseCase: Domain.MovieConfigurationUseCase {
     private let network: MovieConfigurationNetwork
-    
+
     init(network: MovieConfigurationNetwork) {
         self.network = network
     }
-    
+
     func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration, Error>> {
         return network.fetchMovieConfiguration()
+    }
+
+    func saveMovieConfiguration(_ movieConfiguration: MovieConfiguration) -> Observable<Result<Bool, Error>> {
+        return Observable.empty()
     }
 }

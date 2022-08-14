@@ -33,8 +33,6 @@ class NetworkUtility {
             } else {
                 networkStatus.accept(.notConnect)
             }
-
-            print(path.isExpensive)
         }
     }
 

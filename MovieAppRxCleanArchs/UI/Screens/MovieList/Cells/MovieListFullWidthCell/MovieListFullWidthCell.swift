@@ -38,11 +38,12 @@ class MovieListFullWidthCell: MovieListCell {
         tileViews["rating"] = addTileView(title: Strings.Label.rating, titleFont: Fonts.Roboto.regular(with: 14), titleColor: Colors.blackColor, value: " ", valueFont: Fonts.Roboto.regular(with: 14), valueColor: Colors.redColor, valueAlignment: .left, into: sortInfoStackView)
         favoriteButton.setTitle("", for: .normal)
     }
-    
+
     override func configCell(dataSource: MovieListCellDataSource) {
         titleLabel.text = dataSource.movie?.title
         tileViews["release_date"]?.valueLabel = dataSource.movie?.releaseDate
         tileViews["rating"]?.valueLabel = String(format: "%.1f", dataSource.movie?.voteAverage ?? 0.0) + "/10.0"
         overviewLabel.text = dataSource.movie?.overview
+        imageView.sdSetMovieImage(path: dataSource.movie?.posterPath ?? "", fileSizeType: .poster, completion: nil)
     }
 }

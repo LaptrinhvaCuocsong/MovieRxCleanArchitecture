@@ -14,6 +14,7 @@ protocol CoreDataRepresentable {
 
     var uid: String { get }
 
+    func sync(in context: NSManagedObjectContext) -> Observable<Result<CoreDataType, Error>>
     func update(entity: CoreDataType)
 }
 

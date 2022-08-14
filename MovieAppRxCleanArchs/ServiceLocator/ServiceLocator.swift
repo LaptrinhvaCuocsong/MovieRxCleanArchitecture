@@ -18,16 +18,16 @@ func registerDIModules(_ modules: [DIModule]) {
 
 class ServiceLocator {
     typealias ServiceLocatorFactory<T> = (ServiceLocator) -> T
-    
+
     static let shared = ServiceLocator()
-    
+
     private lazy var factoryServices: [String: (isFactory: Bool, factory: ServiceLocatorFactory<Any>)] = [:]
     private lazy var services: [String: Any] = [:]
     private let lock = NSRecursiveLock()
-    
+
     func registerSingleton<T>(_ serviceType: T.Type,
-                                 name: String? = nil,
-                                 factory: @escaping ServiceLocatorFactory<T>) {
+                              name: String? = nil,
+                              factory: @escaping ServiceLocatorFactory<T>) {
         var key = "\(String(describing: serviceType))"
         if let name = name {
             key += "_\(name)"
@@ -36,10 +36,10 @@ class ServiceLocator {
         services[key] = factory(self)
         lock.unlock()
     }
-    
+
     func registerLazySingleton<T>(_ serviceType: T.Type,
-                                             name: String? = nil,
-                                             factory: @escaping ServiceLocatorFactory<T>) {
+                                  name: String? = nil,
+                                  factory: @escaping ServiceLocatorFactory<T>) {
         var key = "\(String(describing: serviceType))"
         if let name = name {
             key += "_\(name)"
@@ -48,10 +48,10 @@ class ServiceLocator {
         factoryServices[key] = (isFactory: false, factory: factory)
         lock.unlock()
     }
-    
+
     func registerFactory<T>(_ serviceType: T.Type,
-                                             name: String? = nil,
-                                             factory: @escaping ServiceLocatorFactory<T>) {
+                            name: String? = nil,
+                            factory: @escaping ServiceLocatorFactory<T>) {
         var key = "\(String(describing: serviceType))"
         if let name = name {
             key += "_\(name)"
@@ -60,8 +60,8 @@ class ServiceLocator {
         factoryServices[key] = (isFactory: true, factory: factory)
         lock.unlock()
     }
-    
-    func get<T>(name: String? = nil) -> T? {
+
+    func get<T>(type: T.Type = T.self, name: String? = nil) -> T? {
         var key = "\(String(describing: T.self))"
         if let name = name {
             key += "_\(name)"

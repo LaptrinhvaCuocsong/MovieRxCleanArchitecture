@@ -13,6 +13,7 @@ import UIKit
 class SplashVC: BaseVC {
     private var viewModel: SplashVM
     private let disposeBag = DisposeBag()
+    private let delayDuration: Int = 2
 
     init(viewModel: SplashVM) {
         self.viewModel = viewModel
@@ -34,12 +35,21 @@ class SplashVC: BaseVC {
                 self.handleMoveConfiguration(result: result)
             }
             .disposed(by: disposeBag)
+
+        Driver.just(()).delay(.seconds(delayDuration))
+            .drive { [unowned self] _ in
+                viewModel.coordinator.toMainInterface()
+            }
+            .disposed(by: disposeBag)
     }
 
-    private func handleMoveConfiguration(result: Result<MovieConfiguration, Error>) {
+    private func handleMoveConfiguration(result: Result<MovieConfiguration.Images?, Error>) {
         switch result {
-        case let .success(configuration):
-            viewModel.coordinator.toMainInterface()
+        case let .success(images):
+            guard let images = images else {
+                return
+            }
+            DataManager.shared.save(movieImageConfiguration: images)
         default: break
         }
     }

@@ -2,7 +2,7 @@ import Domain
 import Foundation
 
 public final class UseCaseProvider: Domain.UseCaseProvider {
-    private let coreDataStack = CoreDataStack()
+    private let repositoryProvider = RepositoryProvider()
 
     public init() {
     }
@@ -12,6 +12,6 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
     }
 
     public func makeMovieConfigurationUseCase() -> Domain.MovieConfigurationUseCase? {
-        return MovieConfigurationUseCase(repository: RepositoryProvider().makeMovieConfigurationRepository())
+        return MovieConfigurationUseCase(repository: repositoryProvider.makeMovieConfigurationRepository())
     }
 }

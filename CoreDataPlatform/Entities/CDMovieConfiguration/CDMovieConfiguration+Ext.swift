@@ -46,7 +46,7 @@ extension MovieConfiguration: CoreDataRepresentable {
     typealias CoreDataType = CDMovieConfiguration
 
     var uid: String {
-        return ""
+        return String(describing: CDMovieConfiguration.self)
     }
 
     func sync(in context: NSManagedObjectContext) -> Observable<Result<CoreDataType, Error>> {
@@ -58,5 +58,6 @@ extension MovieConfiguration: CoreDataRepresentable {
     }
 
     func update(entity: CDMovieConfiguration) {
+        entity.uid = uid
     }
 }

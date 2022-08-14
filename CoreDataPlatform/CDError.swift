@@ -7,6 +7,13 @@
 
 import Foundation
 
-enum CDError: Error {
+public enum CDError: Error {
     case modelNotFound
+
+    public var localizedDescription: String {
+        switch self {
+        case .modelNotFound:
+            return "Model not found"
+        }
+    }
 }

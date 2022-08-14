@@ -15,8 +15,6 @@ final class Application {
     weak var window: UIWindow?
     weak var baseSideMenu: BaseSideMenuVC?
 
-    // UseCases
-
     private init() {
     }
 

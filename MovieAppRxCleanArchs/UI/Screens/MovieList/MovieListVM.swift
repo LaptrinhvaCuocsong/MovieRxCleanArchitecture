@@ -28,7 +28,7 @@ class MovieListVM: AppViewModel {
     private var movies: [Movie] = []
     private var page: Int = 0
     private var isEndLoadMore = false
-    private let moviesUseCase: MoviesUseCase? = getService(MoviesUseCase.self)
+    private let moviesRepository = getService(MoviesRepository.self)
     private let isLayoutByList = BehaviorRelay<Bool>(value: true)
     private let loading = PublishSubject<Bool>()
     private let activityIndicator = ActivityIndicator()
@@ -78,7 +78,7 @@ class MovieListVM: AppViewModel {
 
     private func fetchMovies() -> Observable<Result<[Movie], Error>> {
         page += 1
-        return moviesUseCase!.popularMovies(input: PopularMovieParams(page: page))
+        return moviesRepository!.popularMovies(input: PopularMovieParams(page: page))
             .trackActivity(activityIndicator)
             .do(onNext: { [weak self] result in
                 guard let self = self,

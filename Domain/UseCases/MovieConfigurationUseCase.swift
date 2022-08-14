@@ -10,4 +10,5 @@ import RxSwift
 
 public protocol MovieConfigurationUseCase {
     func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration, Error>>
+    func saveMovieConfiguration(_ movieConfiguration: MovieConfiguration) -> Observable<Result<Bool, Error>>
 }

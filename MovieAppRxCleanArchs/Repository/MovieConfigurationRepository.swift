@@ -7,7 +7,9 @@
 
 import Domain
 import Foundation
+import RxSwift
 
 protocol MovieConfigurationRepository {
-    func fetchMovieConfiguration() -> Result<MovieConfiguration.Images, Error>?
+    func movieConfigurationFromCache() -> Observable<Result<MovieConfiguration.Images?, Error>>?
+    func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration.Images?, Error>>?
 }

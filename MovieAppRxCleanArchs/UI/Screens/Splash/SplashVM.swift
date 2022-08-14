@@ -15,12 +15,13 @@ struct SplashInput: ViewModelInput {
 }
 
 struct SplashOutput: ViewModelOutput {
-    let movieConfiguration: Driver<Result<MovieConfiguration, Error>>
+    let movieConfiguration: Driver<Result<MovieConfiguration.Images?, Error>>
 }
 
 class SplashVM: AppViewModel {
     var coordinator: SplashCoordinator
-    private let movieConfigurationUseCase: MovieConfigurationUseCase? = getService(MovieConfigurationUseCase.self)
+    
+    private let movieConfigurationRepository = getService(MovieConfigurationRepository.self)
 
     init(coordinator: SplashCoordinator) {
         self.coordinator = coordinator
@@ -29,8 +30,9 @@ class SplashVM: AppViewModel {
     func transform(input: SplashInput) -> SplashOutput {
         let movieConfiguration = input.viewDidLoadTrigger
             .asObservable()
-            .flatMapLatest { [unowned self] _ in
-                movieConfigurationUseCase!.fetchMovieConfiguration()
+            .compactMap({ [unowned self] in movieConfigurationRepository })
+            .flatMapLatest { repo in
+                repo.fetchMovieConfiguration() ?? Observable.empty()
             }
             .asDriverOnErrorJustComplete()
 

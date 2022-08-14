@@ -13,8 +13,8 @@ public enum APIError: Error {
     case unknown(String)
     case noInternet
     case cancel
-    
-    public var description: String {
+
+    public var localizedDescription: String {
         switch self {
         case .decodingError:
             return "Error format JSON"

@@ -9,24 +9,51 @@ import CoreDataPlatform
 import Domain
 import Foundation
 import NetworkPlatform
+import RxSwift
+import Utils
 
 class MovieConfigurationRepositoryImpl: MovieConfigurationRepository {
-    private let networkUseCase: MoviesUseCase?
-    private let coreDataUseCase: MovieConfigurationUseCase?
-    private let networkUseCaseProvider = NetworkPlatform.UseCaseProvider()
-    private let coreDataUseCaseProvider = CoreDataPlatform.UseCaseProvider()
+    private let networkUseCase: MovieConfigurationUseCase
+    private let coreDataUseCase: MovieConfigurationUseCase
+    private let saveMovieConfiguration = PublishSubject<MovieConfiguration>()
+    private let disposeBag = DisposeBag()
 
-    init() {
-        networkUseCase = networkUseCaseProvider.makeMoviesUseCase()
-        coreDataUseCase = coreDataUseCaseProvider.makeMovieConfigurationUseCase()
+    init(networkUseCase: MovieConfigurationUseCase,
+         coreDataUseCase: MovieConfigurationUseCase) {
+        self.networkUseCase = networkUseCase
+        self.coreDataUseCase = coreDataUseCase
+        binding()
     }
 
-    func fetchMovieConfiguration() -> Result<MovieConfiguration.Images, Error>? {
-        if NetworkUtility.shared.status == .notConnect {
-            return coreDataUseCase?.fetchMovieConfiguration().map({ result in
+    private func binding() {
+        saveMovieConfiguration
+            .flatMapLatest { [unowned self] movieConfiguration -> Observable<Result<Bool, Error>> in
+                coreDataUseCase.saveMovieConfiguration(movieConfiguration)
+            }
+            .subscribe(onNext: { result in
                 switch result {
+                case .success:
+                    print("❤️❤️❤️ Save MovieConfiguration SUCCESS")
+                case let .failure(error):
+                    print("😭😭😭 Save MovieConfiguration Error: \(error)")
                 }
             })
-        return nil
+            .disposed(by: disposeBag)
+    }
+
+    func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration.Images?, Error>>? {
+        if NetworkUtility.shared.status == .notConnect {
+            return coreDataUseCase.fetchMovieConfiguration().map({ $0.to { configuration in configuration.images } })
+        }
+        return networkUseCase.fetchMovieConfiguration()
+            .do(onNext: { [weak self] result in
+                guard let self = self, let configuration = result.data else { return }
+                self.saveMovieConfiguration.onNext(configuration)
+            })
+            .map({ $0.to { configuration in configuration.images } })
+    }
+
+    func movieConfigurationFromCache() -> Observable<Result<MovieConfiguration.Images?, Error>>? {
+        return coreDataUseCase.fetchMovieConfiguration().map({ $0.to(tranform: { $0.images }) })
     }
 }
