@@ -16,6 +16,8 @@ class MovieListVC: BaseVC {
 
     private var viewModel: MovieListVM
     private let disposeBag = DisposeBag()
+    private let pullToRefreshTrigger = BehaviorSubject<Void>(value: ())
+    private let loadMoreTrigger = PublishSubject<Void>()
 
     init(viewModel: MovieListVM) {
         self.viewModel = viewModel
@@ -52,7 +54,8 @@ class MovieListVC: BaseVC {
 
     private lazy var collectionHalfWidthLayout: UICollectionViewLayout = {
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: (collectionView.frame.width - 16.0) / 2, height: 180.0)
+        let itemWidth = (collectionView.frame.width - 16.0) / 2
+        flowLayout.itemSize = CGSize(width: itemWidth, height: itemWidth + 60)
         flowLayout.minimumLineSpacing = 16.0
         flowLayout.minimumInteritemSpacing = 16.0
         flowLayout.sectionInset = .zero
@@ -71,13 +74,23 @@ class MovieListVC: BaseVC {
         collectionView.collectionViewLayout = collectionHalfWidthLayout
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.setupPullToRefresh { [unowned self] in
+            pullToRefreshTrigger.onNext(())
+        }
+        collectionView.setupLoadMore { [unowned self] in
+            !viewModel.checkIsEndLoadMore()
+        } loadMoreAction: { [unowned self] in
+            loadMoreTrigger.onNext(())
+        }
     }
 
     override func binding() {
         let viewDidLoadTrigger = Driver.just(()).delay(.milliseconds(300))
 
         let input = MovieListVM.Input(changeLayoutTrigger: btnChangeLayout.rx.tap.asDriver(),
-                                      viewDidLoadTrigger: viewDidLoadTrigger)
+                                      viewDidLoadTrigger: viewDidLoadTrigger,
+                                      pullToRefreshTrigger: pullToRefreshTrigger.asDriverOnErrorJustComplete(),
+                                      loadMoreTrigger: loadMoreTrigger.asDriverOnErrorJustComplete())
         let output = viewModel.transform(input: input)
 
         output.movies
@@ -111,6 +124,8 @@ class MovieListVC: BaseVC {
     }
 
     private func handleMovies(result: Result<[Movie], Error>) {
+        collectionView.endPullToRefresh()
+        collectionView.endLoadMore()
         switch result {
         case .success:
             collectionView.reloadData()

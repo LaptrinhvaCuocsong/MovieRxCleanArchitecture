@@ -17,4 +17,14 @@ class MovieListHalfWidthCell: MovieListCell {
         titleLabel.text = ""
         titleLabel.numberOfLines = 2
     }
+    
+    override func configCell(dataSource: MovieListCellDataSource) {
+        guard let movie = dataSource.movie else {
+            return
+        }
+        titleLabel.text = movie.title
+        titleLabel.sizeToFit()
+        imageView.sdSetMovieImage(path: dataSource.movie?.posterPath ?? "", fileSizeType: .poster, completion: nil)
+        layoutIfNeeded()
+    }
 }

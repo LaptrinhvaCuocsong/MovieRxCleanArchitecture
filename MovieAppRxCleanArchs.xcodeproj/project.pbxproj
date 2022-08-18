@@ -12,6 +12,7 @@
 		BD04A35F64A8AC863023DD6A /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B715F0C84C6DB76255FE8F4B /* Pods_Domain.framework */; };
 		C614DB72DD84E5FE59720697 /* Pods_NetworkPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254DB75126B942DB21BAE10A /* Pods_NetworkPlatform.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D2FFADB334BC1399105F7248 /* Pods_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77587DC30B0F5BD50C25B0B1 /* Pods_Utils.framework */; };
+		EF02059D28ACFB3E00B99483 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02059C28ACFB3E00B99483 /* UIScrollView+Ext.swift */; };
 		EF02CC2E284E532F007FF7FF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CC2D284E532F007FF7FF /* Network.swift */; };
 		EF02CC30284E545A007FF7FF /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CC2F284E545A007FF7FF /* NetworkProvider.swift */; };
 		EF02CC32284E560D007FF7FF /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CC31284E560D007FF7FF /* UseCaseProvider.swift */; };
@@ -216,6 +217,7 @@
 		D21CA9376357F976CB7652F0 /* Pods-MovieAppRxCleanArchs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppRxCleanArchs.debug.xcconfig"; path = "Target Support Files/Pods-MovieAppRxCleanArchs/Pods-MovieAppRxCleanArchs.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA889F38C515F005C904DFB /* Pods-CoreDataPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatform.debug.xcconfig"; path = "Target Support Files/Pods-CoreDataPlatform/Pods-CoreDataPlatform.debug.xcconfig"; sourceTree = "<group>"; };
 		E4A4C207C8AECCDC1EB4D9E8 /* Pods-NetworkPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkPlatform.release.xcconfig"; path = "Target Support Files/Pods-NetworkPlatform/Pods-NetworkPlatform.release.xcconfig"; sourceTree = "<group>"; };
+		EF02059C28ACFB3E00B99483 /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
 		EF02CC2D284E532F007FF7FF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EF02CC2F284E545A007FF7FF /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		EF02CC31284E560D007FF7FF /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
@@ -852,6 +854,7 @@
 				EF27B9CA288D08B40064611D /* UIView+Ext.swift */,
 				EFCE367C28960D7D0091298E /* UIImageView+Ext.swift */,
 				EF9C4A0A28A8D7630026CD13 /* MovieConfiguration+Ext.swift */,
+				EF02059C28ACFB3E00B99483 /* UIScrollView+Ext.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1390,6 +1393,7 @@
 				EF9939052839F18F0077B3A9 /* Reusable.swift in Sources */,
 				EF2D89C02858E3A30070B5C8 /* Fonts.swift in Sources */,
 				EF772C6828A171F400266088 /* MovieConfigurationRepository.swift in Sources */,
+				EF02059D28ACFB3E00B99483 /* UIScrollView+Ext.swift in Sources */,
 				EF2760CC28524BED00E77BCA /* SettingCoordinator.swift in Sources */,
 				EF772C6B28A172A700266088 /* MovieConfigurationRepositoryImpl.swift in Sources */,
 				EFFE49C32871F35E0081C1C5 /* Result+Ext.swift in Sources */,
@@ -1528,7 +1532,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1561,7 +1565,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1711,7 +1715,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -1743,7 +1747,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -1776,7 +1780,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1810,7 +1814,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1847,7 +1851,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1883,7 +1887,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1918,7 +1922,7 @@
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1952,7 +1956,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};

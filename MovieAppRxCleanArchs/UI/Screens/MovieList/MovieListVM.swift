@@ -14,6 +14,8 @@ import RxSwift
 struct MovieListInput: ViewModelInput {
     let changeLayoutTrigger: Driver<Void>
     let viewDidLoadTrigger: Driver<Void>
+    let pullToRefreshTrigger: Driver<Void>
+    let loadMoreTrigger: Driver<Void>
 }
 
 struct MovieListOutput: ViewModelOutput {
@@ -25,12 +27,13 @@ struct MovieListOutput: ViewModelOutput {
 class MovieListVM: AppViewModel {
     var coordinator: MovieListCoordinator
 
+    private let moviesSubject = PublishSubject<Result<[Movie], Error>>()
     private var movies: [Movie] = []
     private var page: Int = 0
     private var isEndLoadMore = false
     private let moviesRepository = getService(MoviesRepository.self)
     private let isLayoutByList = BehaviorRelay<Bool>(value: true)
-    private let loading = PublishSubject<Bool>()
+    private let loading = BehaviorRelay<Bool>(value: false)
     private let activityIndicator = ActivityIndicator()
     private let disposeBag = DisposeBag()
 
@@ -48,16 +51,32 @@ class MovieListVM: AppViewModel {
             }
             .disposed(by: disposeBag)
 
-        let movies = input.viewDidLoadTrigger
-            .asObservable()
-            .flatMapLatest({ [unowned self] in
+        Observable.combineLatest(input.viewDidLoadTrigger.asObservable(),
+                                 input.pullToRefreshTrigger.asObservable())
+            .do { [unowned self] _ in
+                resetPage()
+            }
+            .filter({ [unowned self] _ in !loading.value })
+            .flatMapLatest({ [unowned self] _ in
                 fetchMovies()
             })
-            .asDriverOnErrorJustComplete()
+            .bind(to: moviesSubject)
+            .disposed(by: disposeBag)
 
-        activityIndicator.asSharedSequence().drive(loading).disposed(by: disposeBag)
+        input.loadMoreTrigger.debounce(.milliseconds(200))
+            .asObservable()
+            .filter({ [unowned self] _ in !loading.value })
+            .flatMapLatest({ [unowned self] _ in
+                fetchMovies()
+            })
+            .bind(to: moviesSubject)
+            .disposed(by: disposeBag)
 
-        return MovieListOutput(movies: movies,
+        activityIndicator.asSharedSequence()
+            .drive(loading)
+            .disposed(by: disposeBag)
+
+        return MovieListOutput(movies: moviesSubject.asDriverOnErrorJustComplete(),
                                isLayoutByList: isLayoutByList.asDriver(),
                                isLoading: loading.asDriverOnErrorJustComplete())
     }
@@ -74,7 +93,16 @@ class MovieListVM: AppViewModel {
         return movies
     }
 
+    func checkIsEndLoadMore() -> Bool {
+        return isEndLoadMore
+    }
+
     // MARK: - Private methods
+
+    private func resetPage() {
+        page = 0
+        movies.removeAll()
+    }
 
     private func fetchMovies() -> Observable<Result<[Movie], Error>> {
         page += 1

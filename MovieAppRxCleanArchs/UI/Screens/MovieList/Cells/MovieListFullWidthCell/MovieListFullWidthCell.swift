@@ -45,5 +45,6 @@ class MovieListFullWidthCell: MovieListCell {
         tileViews["rating"]?.valueLabel = String(format: "%.1f", dataSource.movie?.voteAverage ?? 0.0) + "/10.0"
         overviewLabel.text = dataSource.movie?.overview
         imageView.sdSetMovieImage(path: dataSource.movie?.posterPath ?? "", fileSizeType: .poster, completion: nil)
+        layoutIfNeeded()
     }
 }
