@@ -106,7 +106,7 @@ class MovieListVM: AppViewModel {
 
     private func fetchMovies() -> Observable<Result<[Movie], Error>> {
         page += 1
-        return moviesRepository!.popularMovies(input: PopularMovieParams(page: page))
+        return moviesRepository!.popularMovies(page: page, limit: nil)
             .trackActivity(activityIndicator)
             .do(onNext: { [weak self] result in
                 guard let self = self,

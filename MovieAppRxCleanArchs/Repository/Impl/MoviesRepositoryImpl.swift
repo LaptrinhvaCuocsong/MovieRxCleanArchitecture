@@ -8,6 +8,7 @@
 import Domain
 import Foundation
 import RxSwift
+import NetworkPlatform
 
 class MoviesRepositoryImpl: MoviesRepository {
     private let nwMoviesUseCase: MoviesUseCase
@@ -16,7 +17,8 @@ class MoviesRepositoryImpl: MoviesRepository {
         self.nwMoviesUseCase = nwMoviesUseCase
     }
 
-    func popularMovies(input: Encodable) -> Observable<Result<Movies, Error>> {
+    func popularMovies(page: Int, limit: Int?) -> Observable<Result<Movies, Error>> {
+        let input = PopularMovieParams(page: page)
         return nwMoviesUseCase.popularMovies(input: input)
     }
 }

@@ -97,6 +97,7 @@
 		EF82C2EE28704CF40069BA72 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF82C2ED28704CF40069BA72 /* ProfileCoordinator.swift */; };
 		EF82C2F0287057B90069BA72 /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF82C2EF287057B90069BA72 /* ProfileDataSource.swift */; };
 		EF8722EB2871A64B0074B54F /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8722EA2871A64B0074B54F /* UseCaseProvider.swift */; };
+		EF987AFF28AE4B2D003F6EED /* MoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF987AFE28AE4B2D003F6EED /* MoviesUseCase.swift */; };
 		EF9938BF2839EB7E0077B3A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9938BE2839EB7E0077B3A9 /* AppDelegate.swift */; };
 		EF9938C12839EB7E0077B3A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9938C02839EB7E0077B3A9 /* SceneDelegate.swift */; };
 		EF9938C92839EB7E0077B3A9 /* MovieAppRxCleanArchs.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EF9938C72839EB7E0077B3A9 /* MovieAppRxCleanArchs.xcdatamodeld */; };
@@ -131,6 +132,9 @@
 		EFBD5C4B2899EE9A0035469D /* SplashVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EFBD5C492899EE9A0035469D /* SplashVC.xib */; };
 		EFBD5C4D2899EEAA0035469D /* SplashVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD5C4C2899EEAA0035469D /* SplashVM.swift */; };
 		EFBD5C4F2899EEB80035469D /* SplashCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFBD5C4E2899EEB80035469D /* SplashCoordinator.swift */; };
+		EFCD7EA328AE343200181950 /* CDMovie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCD7EA228AE343200181950 /* CDMovie+CoreDataClass.swift */; };
+		EFCD7EA528AE349300181950 /* CDMovie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCD7EA428AE349300181950 /* CDMovie+CoreDataProperties.swift */; };
+		EFCD7EA728AE376F00181950 /* CDMovie+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCD7EA628AE376F00181950 /* CDMovie+Ext.swift */; };
 		EFCE367D28960D7D0091298E /* UIImageView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFCE367C28960D7D0091298E /* UIImageView+Ext.swift */; };
 		EFE242ED28998FA700D3F575 /* MovieConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE242EC28998FA700D3F575 /* MovieConfiguration.swift */; };
 		EFE242EF2899E2F800D3F575 /* MovieConfigurationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE242EE2899E2F800D3F575 /* MovieConfigurationUseCase.swift */; };
@@ -295,6 +299,7 @@
 		EF82C2ED28704CF40069BA72 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		EF82C2EF287057B90069BA72 /* ProfileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
 		EF8722EA2871A64B0074B54F /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		EF987AFE28AE4B2D003F6EED /* MoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUseCase.swift; sourceTree = "<group>"; };
 		EF9938BB2839EB7E0077B3A9 /* MovieAppRxCleanArchs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppRxCleanArchs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9938BE2839EB7E0077B3A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF9938C02839EB7E0077B3A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -334,6 +339,9 @@
 		EFBD5C492899EE9A0035469D /* SplashVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashVC.xib; sourceTree = "<group>"; };
 		EFBD5C4C2899EEAA0035469D /* SplashVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVM.swift; sourceTree = "<group>"; };
 		EFBD5C4E2899EEB80035469D /* SplashCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashCoordinator.swift; sourceTree = "<group>"; };
+		EFCD7EA228AE343200181950 /* CDMovie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMovie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EFCD7EA428AE349300181950 /* CDMovie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMovie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EFCD7EA628AE376F00181950 /* CDMovie+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDMovie+Ext.swift"; sourceTree = "<group>"; };
 		EFCE367C28960D7D0091298E /* UIImageView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Ext.swift"; sourceTree = "<group>"; };
 		EFE242EC28998FA700D3F575 /* MovieConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConfiguration.swift; sourceTree = "<group>"; };
 		EFE242EE2899E2F800D3F575 /* MovieConfigurationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConfigurationUseCase.swift; sourceTree = "<group>"; };
@@ -496,6 +504,7 @@
 				EF15E7CC289ADFD6005966CD /* Convertion */,
 				EF15E7EC289AE6A0005966CD /* CDMovieConfiguration */,
 				EF15E7E7289AE597005966CD /* CDimageMovieConfiguration */,
+				EFCD7EA128AE341400181950 /* CDMovie */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -541,6 +550,7 @@
 			children = (
 				EF7BEE7728A036C30045D547 /* MovieConfigurationUseCase.swift */,
 				EF15E7E2289AE012005966CD /* UseCaseProvider.swift */,
+				EF987AFE28AE4B2D003F6EED /* MoviesUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -878,6 +888,16 @@
 				EFBD5C4E2899EEB80035469D /* SplashCoordinator.swift */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		EFCD7EA128AE341400181950 /* CDMovie */ = {
+			isa = PBXGroup;
+			children = (
+				EFCD7EA228AE343200181950 /* CDMovie+CoreDataClass.swift */,
+				EFCD7EA428AE349300181950 /* CDMovie+CoreDataProperties.swift */,
+				EFCD7EA628AE376F00181950 /* CDMovie+Ext.swift */,
+			);
+			path = CDMovie;
 			sourceTree = "<group>";
 		};
 		EFF2BC3F2891910C0055116A /* RequestParam */ = {
@@ -1337,12 +1357,16 @@
 				EF15E7E4289AE012005966CD /* UseCaseProvider.swift in Sources */,
 				EF7BEE7828A036C30045D547 /* MovieConfigurationUseCase.swift in Sources */,
 				EF15E7EB289AE5F1005966CD /* CDImageMovieConfiguration+CoreDataProperties.swift in Sources */,
+				EFCD7EA728AE376F00181950 /* CDMovie+Ext.swift in Sources */,
 				EF15E7EE289AE6B7005966CD /* CDMovieConfiguration+CoreDataClass.swift in Sources */,
 				EF15E7D0289ADFD6005966CD /* DomainConvertibleType.swift in Sources */,
 				EF15E7F2289AE748005966CD /* CDImageMovieConfiguration+Ext.swift in Sources */,
 				EF15E7C7289ADF87005966CD /* Model.xcdatamodeld in Sources */,
 				EF15E7CA289ADF97005966CD /* CoreDataStack.swift in Sources */,
+				EFCD7EA528AE349300181950 /* CDMovie+CoreDataProperties.swift in Sources */,
 				EF15E7D5289ADFF1005966CD /* Observable+Ext.swift in Sources */,
+				EF987AFF28AE4B2D003F6EED /* MoviesUseCase.swift in Sources */,
+				EFCD7EA328AE343200181950 /* CDMovie+CoreDataClass.swift in Sources */,
 				EF15E7D4289ADFF1005966CD /* NSManagedObjectContext+Ext.swift in Sources */,
 				EF15E7DF289AE009005966CD /* ContextScheduler.swift in Sources */,
 			);
