@@ -10,4 +10,5 @@ import RxSwift
 
 public protocol MoviesUseCase {
     func popularMovies(input: Encodable) -> Observable<Result<Movies, Error>>
+    func saveMovies(_ movies: [Movie]) -> Observable<Result<Bool, Error>>
 }

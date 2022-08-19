@@ -75,4 +75,9 @@ extension Reactive where Base: NSManagedObjectContext {
                 }
             })
     }
+    
+    func sync<C: CoreDataRepresentable, P>(entities: [C],
+                                           update: @escaping (P) -> Void) -> Observable<Result<[P], Error>> where C.CoreDataType == P {
+        
+    }
 }

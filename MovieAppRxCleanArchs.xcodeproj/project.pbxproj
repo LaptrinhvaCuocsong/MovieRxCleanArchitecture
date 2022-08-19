@@ -20,6 +20,7 @@
 		EF02CC3B284E5D45007FF7FF /* MovieListVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF02CC39284E5D45007FF7FF /* MovieListVC.xib */; };
 		EF02CC3D284E5D50007FF7FF /* MovieListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CC3C284E5D50007FF7FF /* MovieListVM.swift */; };
 		EF02CC3F284E5D59007FF7FF /* MovieListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CC3E284E5D59007FF7FF /* MovieListCoordinator.swift */; };
+		EF1039F428AF24230010C7AB /* CDPopularMoviesParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF1039F328AF24230010C7AB /* CDPopularMoviesParam.swift */; };
 		EF15E7BD289ADF75005966CD /* CoreDataPlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = EF15E7BC289ADF75005966CD /* CoreDataPlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EF15E7C0289ADF75005966CD /* CoreDataPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF15E7BA289ADF75005966CD /* CoreDataPlatform.framework */; };
 		EF15E7C1289ADF75005966CD /* CoreDataPlatform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EF15E7BA289ADF75005966CD /* CoreDataPlatform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -229,6 +230,7 @@
 		EF02CC39284E5D45007FF7FF /* MovieListVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MovieListVC.xib; sourceTree = "<group>"; };
 		EF02CC3C284E5D50007FF7FF /* MovieListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVM.swift; sourceTree = "<group>"; };
 		EF02CC3E284E5D59007FF7FF /* MovieListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCoordinator.swift; sourceTree = "<group>"; };
+		EF1039F328AF24230010C7AB /* CDPopularMoviesParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDPopularMoviesParam.swift; sourceTree = "<group>"; };
 		EF15E7BA289ADF75005966CD /* CoreDataPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreDataPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF15E7BC289ADF75005966CD /* CoreDataPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreDataPlatform.h; sourceTree = "<group>"; };
 		EF15E7C6289ADF87005966CD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -474,9 +476,18 @@
 			path = About;
 			sourceTree = "<group>";
 		};
+		EF1039F228AF23B70010C7AB /* Params */ = {
+			isa = PBXGroup;
+			children = (
+				EF1039F328AF24230010C7AB /* CDPopularMoviesParam.swift */,
+			);
+			path = Params;
+			sourceTree = "<group>";
+		};
 		EF15E7BB289ADF75005966CD /* CoreDataPlatform */ = {
 			isa = PBXGroup;
 			children = (
+				EF1039F228AF23B70010C7AB /* Params */,
 				EF15E7C8289ADF97005966CD /* CoreDataStack */,
 				EF15E7CB289ADFA8005966CD /* Entities */,
 				EF15E7D1289ADFF1005966CD /* Extensions */,
@@ -549,8 +560,8 @@
 			isa = PBXGroup;
 			children = (
 				EF7BEE7728A036C30045D547 /* MovieConfigurationUseCase.swift */,
-				EF15E7E2289AE012005966CD /* UseCaseProvider.swift */,
 				EF987AFE28AE4B2D003F6EED /* MoviesUseCase.swift */,
+				EF15E7E2289AE012005966CD /* UseCaseProvider.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -1357,6 +1368,7 @@
 				EF15E7E4289AE012005966CD /* UseCaseProvider.swift in Sources */,
 				EF7BEE7828A036C30045D547 /* MovieConfigurationUseCase.swift in Sources */,
 				EF15E7EB289AE5F1005966CD /* CDImageMovieConfiguration+CoreDataProperties.swift in Sources */,
+				EF1039F428AF24230010C7AB /* CDPopularMoviesParam.swift in Sources */,
 				EFCD7EA728AE376F00181950 /* CDMovie+Ext.swift in Sources */,
 				EF15E7EE289AE6B7005966CD /* CDMovieConfiguration+CoreDataClass.swift in Sources */,
 				EF15E7D0289ADFD6005966CD /* DomainConvertibleType.swift in Sources */,

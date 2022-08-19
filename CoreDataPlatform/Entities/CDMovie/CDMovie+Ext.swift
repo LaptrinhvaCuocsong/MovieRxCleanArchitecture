@@ -75,5 +75,9 @@ extension Movie: CoreDataRepresentable {
         entity.video = NSNumber(value: video ?? false)
         entity.voteAverage = NSNumber(value: voteAverage ?? 0)
         entity.voteCount = NSNumber(value: voteCount ?? 0)
+        if entity.createAt == nil {
+            entity.createAt = Date()
+        }
+        entity.isFavorite = NSNumber(value: self.getIsFavorite())
     }
 }

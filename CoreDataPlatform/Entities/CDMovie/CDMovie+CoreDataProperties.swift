@@ -27,4 +27,6 @@ extension CDMovie {
     @NSManaged public var video: NSNumber?
     @NSManaged public var voteAverage: NSNumber?
     @NSManaged public var voteCount: NSNumber?
+    @NSManaged public var createAt: Date?
+    @NSManaged public var isFavorite: NSNumber?
 }

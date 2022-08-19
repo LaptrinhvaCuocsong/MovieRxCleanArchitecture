@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import Utils
 
-final class MoviesUseCase<Repository>: Domain.MoviesUseCase where Repository: AbstractRepository, Repository.T == Movies {
+final class MoviesUseCase<Repository>: Domain.MoviesUseCase where Repository: AbstractRepository, Repository.T == Movie {
     private let repository: Repository
 
     init(repository: Repository) {
@@ -18,6 +18,11 @@ final class MoviesUseCase<Repository>: Domain.MoviesUseCase where Repository: Ab
     }
 
     func popularMovies(input: Encodable) -> Observable<Result<Movies, Error>> {
+        let input = (input as? CDPopularMoviesParam) ?? CDPopularMoviesParam(page: 1, limit: 20)
+        return Observable.empty()
+    }
+
+    func saveMovies(_ movies: [Movie]) -> Observable<Result<Bool, Error>> {
         return Observable.empty()
     }
 }
