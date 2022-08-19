@@ -42,7 +42,7 @@ class MovieConfigurationRepositoryImpl: MovieConfigurationRepository {
     }
 
     func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration.Images?, Error>>? {
-        if NetworkUtility.shared.status == .notConnect {
+        if !NetworkUtility.shared.isNetworkConnected {
             return coreDataUseCase.fetchMovieConfiguration().map({ $0.to { configuration in configuration.images } })
         }
         return networkUseCase.fetchMovieConfiguration()

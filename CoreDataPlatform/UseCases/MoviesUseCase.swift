@@ -22,7 +22,7 @@ final class MoviesUseCase<Repository>: Domain.MoviesUseCase where Repository: Ab
         return Observable.empty()
     }
 
-    func saveMovies(_ movies: [Movie]) -> Observable<Result<Bool, Error>> {
-        return Observable.empty()
+    func save(movies: [Movie]) -> Observable<Result<Bool, Error>> {
+        return repository.save(entities: movies)
     }
 }

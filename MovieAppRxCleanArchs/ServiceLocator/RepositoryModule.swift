@@ -17,6 +17,7 @@ enum RepositoryName: String {
     case nwMovieConfigurationUseCase
     case cdMovieConfigurationUseCase
     case nwMoviesUseCase
+    case cdMoviesUseCase
 }
 
 class RepositoryModule: DIModule {
@@ -56,9 +57,17 @@ class RepositoryModule: DIModule {
                         name: RepositoryName.nwUseCaseProvider.rawValue)!.makeMoviesUseCase()!
         }
 
+        serviceLocator.registerFactory(MoviesUseCase.self,
+                                       name: RepositoryName.cdMoviesUseCase.rawValue) { service in
+            service.get(type: CoreDataPlatform.UseCaseProvider.self,
+                        name: RepositoryName.cdUseCaseProvider.rawValue)!.makeMoviesUseCase()!
+        }
+
         serviceLocator.registerLazySingleton(MoviesRepository.self) { service in
             MoviesRepositoryImpl(nwMoviesUseCase: service.get(type: MoviesUseCase.self,
-                                                              name: RepositoryName.nwMoviesUseCase.rawValue)!)
+                                                              name: RepositoryName.nwMoviesUseCase.rawValue)!,
+                                 cdMoviesUseCase: service.get(type: MoviesUseCase.self,
+                                                              name: RepositoryName.cdMoviesUseCase.rawValue)!)
         }
     }
 }
