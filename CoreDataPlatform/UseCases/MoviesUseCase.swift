@@ -19,7 +19,16 @@ final class MoviesUseCase<Repository>: Domain.MoviesUseCase where Repository: Ab
 
     func popularMovies(input: Encodable) -> Observable<Result<Movies, Error>> {
         let input = (input as? CDPopularMoviesParam) ?? CDPopularMoviesParam(page: 1, limit: 20)
-        return Observable.empty()
+        return repository.query { request in
+            request.fetchLimit = input.limit
+            request.fetchOffset = max(0, input.page - 1) * input.limit
+            request.sortDescriptors = [NSSortDescriptor(key: "createAt", ascending: false)]
+        }
+        .map({ $0.to(tranform: { Movies(page: input.page,
+                                        results: $0,
+                                        totalPages: nil,
+                                        totalResults: nil,
+                                        pageSize: input.limit) }) })
     }
 
     func save(movies: [Movie]) -> Observable<Result<Bool, Error>> {

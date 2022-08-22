@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct CDPopularMoviesParam {
-    let page: Int
-    let limit: Int
+public struct CDPopularMoviesParam: Encodable {
+    public let page: Int
+    public let limit: Int
+
+    public init(page: Int, limit: Int) {
+        self.page = page
+        self.limit = limit
+    }
 }

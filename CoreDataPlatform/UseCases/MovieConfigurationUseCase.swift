@@ -18,7 +18,7 @@ final class MovieConfigurationUseCase<Repository>: Domain.MovieConfigurationUseC
     }
 
     func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration, Error>> {
-        return repository.query(predicate: nil, sortDescriptors: nil)
+        return repository.query(fetchRequestCustom: nil)
             .map { result in
                 switch result {
                 case let .success(list):

@@ -5,16 +5,16 @@ import RxSwift
 import Utils
 
 protocol AbstractRepository {
-    associatedtype T
-    func query(predicate: NSPredicate?,
-               sortDescriptors: [NSSortDescriptor]?) -> Observable<Result<[T], Error>>
+    associatedtype T: CoreDataRepresentable
+    var context: NSManagedObjectContext { get }
+    func query(fetchRequestCustom: ((NSFetchRequest<T.CoreDataType>) -> Void)?) -> Observable<Result<[T], Error>>
     func save(entity: T) -> Observable<Result<Bool, Error>>
     func save(entities: [T]) -> Observable<Result<Bool, Error>>
     func delete(entity: T) -> Observable<Result<Bool, Error>>
 }
 
 final class Repository<T: CoreDataRepresentable>: AbstractRepository where T == T.CoreDataType.DomainType {
-    private let context: NSManagedObjectContext
+    let context: NSManagedObjectContext
     private let scheduler: ContextScheduler
 
     init(context: NSManagedObjectContext) {
@@ -22,11 +22,9 @@ final class Repository<T: CoreDataRepresentable>: AbstractRepository where T == 
         scheduler = ContextScheduler(context: context)
     }
 
-    func query(predicate: NSPredicate? = nil,
-               sortDescriptors: [NSSortDescriptor]? = nil) -> Observable<Result<[T], Error>> {
+    func query(fetchRequestCustom: ((NSFetchRequest<T.CoreDataType>) -> Void)? = nil) -> Observable<Result<[T], Error>> {
         let request = T.CoreDataType.fetchRequest()
-        request.predicate = predicate
-        request.sortDescriptors = sortDescriptors
+        fetchRequestCustom?(request)
         return context.rx.entities(fetchRequest: request)
             .map({ $0.mapToDomain() })
             .subscribe(on: scheduler)

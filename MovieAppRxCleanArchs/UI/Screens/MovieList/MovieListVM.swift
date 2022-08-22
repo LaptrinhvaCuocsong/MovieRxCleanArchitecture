@@ -73,6 +73,7 @@ class MovieListVM: AppViewModel {
             .disposed(by: disposeBag)
 
         activityIndicator.asSharedSequence()
+            .filter({ [unowned self] _ in page == 1 })
             .drive(loading)
             .disposed(by: disposeBag)
 
@@ -112,9 +113,7 @@ class MovieListVM: AppViewModel {
                 guard let self = self,
                       let movies = result.data,
                       result.error == nil else { return }
-                let page = movies.page ?? 0
-                let totalPage = movies.totalPages ?? 0
-                self.isEndLoadMore = page >= totalPage
+                self.isEndLoadMore = movies.isEndLoadMore
             })
             .map { [weak self] result -> Result<[Movie], Error> in
                 guard let self = self else {

@@ -5,6 +5,7 @@
 //  Created by hungnm98 on 14/08/2022.
 //
 
+import CoreDataPlatform
 import Domain
 import Foundation
 import NetworkPlatform
@@ -39,17 +40,18 @@ class MoviesRepositoryImpl: MoviesRepository {
     }
 
     func popularMovies(page: Int, limit: Int?) -> Observable<Result<Movies, Error>> {
-        let input = PopularMovieParams(page: page)
-        return nwMoviesUseCase.popularMovies(input: input)
-            .do { [weak self] result in
-                guard let self = self, let movies = result.data?.results else {
-                    return
+        if NetworkUtility.shared.isNetworkConnected {
+            let input = PopularMovieParams(page: page)
+            return nwMoviesUseCase.popularMovies(input: input)
+                .do { [weak self] result in
+                    guard let self = self, let movies = result.data?.results else {
+                        return
+                    }
+                    self.saveMovies.onNext(movies)
                 }
-                self.saveMovies.onNext(movies)
-            }
-    }
-
-    func save(movies: [Movie]) -> Observable<Result<Bool, Error>> {
-        return Observable.empty()
+        } else {
+            let input = CDPopularMoviesParam(page: page, limit: limit ?? 20)
+            return cdMoviesUseCase.popularMovies(input: input)
+        }
     }
 }
