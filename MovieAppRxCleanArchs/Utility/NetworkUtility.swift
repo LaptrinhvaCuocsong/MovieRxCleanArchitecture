@@ -26,12 +26,16 @@ class NetworkUtility {
         return networkStatus.value
     }
 
+    var isNetworkConnected: Bool {
+        return status == .connected
+    }
+
     init() {
         monitor.pathUpdateHandler = { [unowned self] path in
-            if path.status == .satisfied {
-                networkStatus.accept(.connected)
-            } else {
+            if path.status == .unsatisfied {
                 networkStatus.accept(.notConnect)
+            } else {
+                networkStatus.accept(.connected)
             }
         }
     }

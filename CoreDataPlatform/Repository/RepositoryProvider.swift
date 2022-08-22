@@ -14,4 +14,8 @@ final class RepositoryProvider {
     func makeMovieConfigurationRepository() -> Repository<MovieConfiguration> {
         return Repository<MovieConfiguration>(context: coreDataStack.context)
     }
+
+    func makeMovieRepository() -> Repository<Movie> {
+        return Repository<Movie>(context: coreDataStack.context)
+    }
 }

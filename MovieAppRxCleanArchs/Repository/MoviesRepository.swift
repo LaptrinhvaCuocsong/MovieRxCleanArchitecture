@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol MoviesRepository {
-    func popularMovies(input: Encodable) -> Observable<Result<Movies, Error>>
+    func popularMovies(page: Int, limit: Int?) -> Observable<Result<Movies, Error>>
 }

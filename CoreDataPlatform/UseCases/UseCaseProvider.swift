@@ -8,7 +8,7 @@ public final class UseCaseProvider: Domain.UseCaseProvider {
     }
 
     public func makeMoviesUseCase() -> Domain.MoviesUseCase? {
-        return nil
+        return MoviesUseCase(repository: repositoryProvider.makeMovieRepository())
     }
 
     public func makeMovieConfigurationUseCase() -> Domain.MovieConfigurationUseCase? {

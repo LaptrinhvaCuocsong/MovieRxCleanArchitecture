@@ -71,7 +71,7 @@ class MovieListVC: BaseVC {
             MovieListFullWidthCell.self,
             MovieListHalfWidthCell.self,
         ])
-        collectionView.collectionViewLayout = collectionHalfWidthLayout
+        collectionView.collectionViewLayout = collectionFullWidthLayout
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.setupPullToRefresh { [unowned self] in
@@ -101,6 +101,7 @@ class MovieListVC: BaseVC {
             .disposed(by: disposeBag)
 
         output.isLayoutByList
+            .skip(1)
             .drive(onNext: { [unowned self] isLayoutByList in
                 self.btnChangeLayout.image = isLayoutByList ? Images.Button.icGrid : Images.Button.icList
                 self.collectionView.reloadData()

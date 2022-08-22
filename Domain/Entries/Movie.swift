@@ -24,7 +24,7 @@ public struct Movie: Codable {
         self.voteAverage = voteAverage
         self.voteCount = voteCount
     }
-    
+
     public let adult: Bool?
     public let backdropPath: String?
     public let genreIds: [Int]?
@@ -39,4 +39,13 @@ public struct Movie: Codable {
     public let video: Bool?
     public let voteAverage: Double?
     public let voteCount: Int?
+    private var isFavorite: Bool?
+
+    public func getIsFavorite() -> Bool {
+        return isFavorite == true
+    }
+
+    public mutating func setFavorite(_ isFavorite: Bool) {
+        self.isFavorite = isFavorite
+    }
 }
