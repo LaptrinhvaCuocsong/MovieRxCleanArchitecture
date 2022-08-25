@@ -10,6 +10,7 @@ import Foundation
 import NetworkPlatform
 import RxCocoa
 import RxSwift
+import Utils
 
 struct MovieListInput: ViewModelInput {
     let changeLayoutTrigger: Driver<Void>
@@ -38,6 +39,9 @@ class MovieListVM: AppViewModel {
     private let activityIndicator = ActivityIndicator()
     private let disposeBag = DisposeBag()
     private let movieListVCActionTrigger = PublishSubject<MovieListVCAction>()
+    private let checkMoviesFavoriteTrigger = PublishSubject<Void>()
+    private var newMoviesRange: Range<Int> = 0 ..< 1
+    private let saveMovieTrigger = PublishSubject<Movie>()
 
     init(coordinator: MovieListCoordinator) {
         self.coordinator = coordinator
@@ -79,6 +83,38 @@ class MovieListVM: AppViewModel {
             .drive(loading)
             .disposed(by: disposeBag)
 
+        checkMoviesFavoriteTrigger.flatMapLatest({ [unowned self] in
+            moviesRepository!.checkFavorite(for: movies[safe: newMoviesRange])
+        })
+            .map({ $0.to { [weak self] newMovies -> [Movie] in
+                guard let self = self else {
+                    return []
+                }
+                var result = self.movies
+                newMovies.forEach { newMovie in
+                    let id = newMovie.id
+                    guard let index = result.firstIndex(where: { $0.id == id }) else {
+                        return
+                    }
+                    result[index].setFavorite(newMovie.getIsFavorite() == true)
+                }
+                return result
+            } })
+            .do(onNext: { [weak self] result in
+                guard let self = self, let movies = result.data else {
+                    return
+                }
+                self.movies = movies
+            })
+            .bind(to: moviesSubject)
+            .disposed(by: disposeBag)
+
+        saveMovieTrigger.flatMapLatest { [unowned self] movie in
+            moviesRepository!.save(movie)
+        }
+        .subscribe()
+        .disposed(by: disposeBag)
+
         return MovieListOutput(movies: moviesSubject.asDriverOnErrorJustComplete(),
                                isLayoutByList: isLayoutByList.asDriver(),
                                isLoading: loading.asDriverOnErrorJustComplete(),
@@ -102,15 +138,18 @@ class MovieListVM: AppViewModel {
     }
 
     func cellDataSource(forCellAt indexPath: IndexPath) -> MovieListCellDataSource? {
+        guard let movie = movies[safe: indexPath.item] else {
+            return nil
+        }
         if isLayoutByList.value {
-            return MovieListFullWidthCellDataSource(movie: movies[indexPath.item]) { [weak self] movie in
+            return MovieListFullWidthCellDataSource(movie: movie) { [weak self] movie in
                 guard let self = self else { return }
-                self.movies[indexPath.row].setFavorite(movie.getIsFavorite())
+                self.movies[indexPath.row].setFavorite(movie.getIsFavorite() == true)
                 self.movieListVCActionTrigger.onNext(.setFavoriteMovie(movie))
-                _ = self.moviesRepository?.save(self.movies[indexPath.row])
+                self.saveMovieTrigger.onNext(self.movies[indexPath.row])
             }
         } else {
-            return DefaultMovieListCellDataSource(movie: movies[indexPath.item])
+            return DefaultMovieListCellDataSource(movie: movie)
         }
     }
 
@@ -129,6 +168,8 @@ class MovieListVM: AppViewModel {
                 guard let self = self,
                       let movies = result.data,
                       result.error == nil else { return }
+                let numberOfMovies = movies.results?.count ?? 0
+                self.newMoviesRange = self.movies.count ..< (self.movies.count + numberOfMovies)
                 self.isEndLoadMore = movies.isEndLoadMore
             })
             .map { [weak self] result -> Result<[Movie], Error> in
@@ -147,6 +188,7 @@ class MovieListVM: AppViewModel {
             .do { [weak self] result in
                 guard let self = self else { return }
                 self.movies = result.data ?? []
+                self.checkMoviesFavoriteTrigger.onNext(())
             }
     }
 }

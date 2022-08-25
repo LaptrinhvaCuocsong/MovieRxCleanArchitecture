@@ -31,10 +31,17 @@ final class MoviesUseCase<Repository>: Domain.MoviesUseCase where Repository: Ab
                                         pageSize: input.limit) }) })
     }
 
+    func popularMovies(ids: [Int]) -> Observable<Result<[Movie], Error>> {
+        return repository.query { request in
+            let predicate = NSPredicate(format: "uid in %@", ids.map({ String($0) }))
+            request.predicate = predicate
+        }
+    }
+
     func save(movies: [Movie]) -> Observable<Result<Bool, Error>> {
         return repository.save(entities: movies)
     }
-    
+
     func save(movie: Movie) -> Observable<Result<Bool, Error>> {
         return repository.save(entity: movie)
     }

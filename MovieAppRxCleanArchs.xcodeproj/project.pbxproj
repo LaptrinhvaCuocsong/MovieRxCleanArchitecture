@@ -13,6 +13,7 @@
 		C614DB72DD84E5FE59720697 /* Pods_NetworkPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254DB75126B942DB21BAE10A /* Pods_NetworkPlatform.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		D2FFADB334BC1399105F7248 /* Pods_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77587DC30B0F5BD50C25B0B1 /* Pods_Utils.framework */; };
 		EF02059D28ACFB3E00B99483 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02059C28ACFB3E00B99483 /* UIScrollView+Ext.swift */; };
+		EF02229428B7E0B500CEC98F /* Sequence+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02229328B7E0B500CEC98F /* Sequence+Ext.swift */; };
 		EF02CC2E284E532F007FF7FF /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CC2D284E532F007FF7FF /* Network.swift */; };
 		EF02CC30284E545A007FF7FF /* NetworkProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CC2F284E545A007FF7FF /* NetworkProvider.swift */; };
 		EF02CC32284E560D007FF7FF /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02CC31284E560D007FF7FF /* UseCaseProvider.swift */; };
@@ -225,6 +226,7 @@
 		DEA889F38C515F005C904DFB /* Pods-CoreDataPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatform.debug.xcconfig"; path = "Target Support Files/Pods-CoreDataPlatform/Pods-CoreDataPlatform.debug.xcconfig"; sourceTree = "<group>"; };
 		E4A4C207C8AECCDC1EB4D9E8 /* Pods-NetworkPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkPlatform.release.xcconfig"; path = "Target Support Files/Pods-NetworkPlatform/Pods-NetworkPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		EF02059C28ACFB3E00B99483 /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
+		EF02229328B7E0B500CEC98F /* Sequence+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+Ext.swift"; sourceTree = "<group>"; };
 		EF02CC2D284E532F007FF7FF /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		EF02CC2F284E545A007FF7FF /* NetworkProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProvider.swift; sourceTree = "<group>"; };
 		EF02CC31284E560D007FF7FF /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
@@ -939,6 +941,7 @@
 			children = (
 				EFF2BC53289192780055116A /* Codable+Ext.swift */,
 				EF772C6428A16A5100266088 /* Result+Ext.swift */,
+				EF02229328B7E0B500CEC98F /* Sequence+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1507,6 +1510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF772C6528A16A5100266088 /* Result+Ext.swift in Sources */,
+				EF02229428B7E0B500CEC98F /* Sequence+Ext.swift in Sources */,
 				EFF2BC54289192780055116A /* Codable+Ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -16,7 +16,7 @@ final class CoreDataStack {
         storeCoordinator = NSPersistentStoreCoordinator(managedObjectModel: model)
         context = NSManagedObjectContext(concurrencyType: .privateQueueConcurrencyType)
         context.persistentStoreCoordinator = storeCoordinator
-        migrateStore(version: 3)
+        migrateStore(version: 4)
     }
 
     private func migrateStore(version: Int) {
