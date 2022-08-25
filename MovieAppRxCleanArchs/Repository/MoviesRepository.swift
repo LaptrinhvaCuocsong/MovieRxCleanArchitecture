@@ -11,4 +11,5 @@ import RxSwift
 
 protocol MoviesRepository {
     func popularMovies(page: Int, limit: Int?) -> Observable<Result<Movies, Error>>
+    func save(_ movie: Movie) -> Observable<Result<Bool, Error>>
 }

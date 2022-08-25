@@ -22,6 +22,7 @@ struct MovieListOutput: ViewModelOutput {
     let movies: Driver<Result<[Movie], Error>>
     let isLayoutByList: Driver<Bool>
     let isLoading: Driver<Bool>
+    let movieListVCAction: Driver<MovieListVCAction>
 }
 
 class MovieListVM: AppViewModel {
@@ -36,6 +37,7 @@ class MovieListVM: AppViewModel {
     private let loading = BehaviorRelay<Bool>(value: false)
     private let activityIndicator = ActivityIndicator()
     private let disposeBag = DisposeBag()
+    private let movieListVCActionTrigger = PublishSubject<MovieListVCAction>()
 
     init(coordinator: MovieListCoordinator) {
         self.coordinator = coordinator
@@ -79,7 +81,8 @@ class MovieListVM: AppViewModel {
 
         return MovieListOutput(movies: moviesSubject.asDriverOnErrorJustComplete(),
                                isLayoutByList: isLayoutByList.asDriver(),
-                               isLoading: loading.asDriverOnErrorJustComplete())
+                               isLoading: loading.asDriverOnErrorJustComplete(),
+                               movieListVCAction: movieListVCActionTrigger.asDriverOnErrorJustComplete())
     }
 
     func bundleIdentifier(forCellAt indexPath: IndexPath) -> String {
@@ -96,6 +99,19 @@ class MovieListVM: AppViewModel {
 
     func checkIsEndLoadMore() -> Bool {
         return isEndLoadMore
+    }
+
+    func cellDataSource(forCellAt indexPath: IndexPath) -> MovieListCellDataSource? {
+        if isLayoutByList.value {
+            return MovieListFullWidthCellDataSource(movie: movies[indexPath.item]) { [weak self] movie in
+                guard let self = self else { return }
+                self.movies[indexPath.row].setFavorite(movie.getIsFavorite())
+                self.movieListVCActionTrigger.onNext(.setFavoriteMovie(movie))
+                _ = self.moviesRepository?.save(self.movies[indexPath.row])
+            }
+        } else {
+            return DefaultMovieListCellDataSource(movie: movies[indexPath.item])
+        }
     }
 
     // MARK: - Private methods

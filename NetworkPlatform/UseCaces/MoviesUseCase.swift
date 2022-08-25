@@ -24,4 +24,8 @@ class MoviesUseCase: Domain.MoviesUseCase {
     func save(movies: [Movie]) -> Observable<Result<Bool, Error>> {
         return Observable.empty()
     }
+
+    func save(movie: Movie) -> Observable<Result<Bool, Error>> {
+        return Observable.empty()
+    }
 }

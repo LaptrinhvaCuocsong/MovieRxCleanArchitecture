@@ -34,4 +34,8 @@ final class MoviesUseCase<Repository>: Domain.MoviesUseCase where Repository: Ab
     func save(movies: [Movie]) -> Observable<Result<Bool, Error>> {
         return repository.save(entities: movies)
     }
+    
+    func save(movie: Movie) -> Observable<Result<Bool, Error>> {
+        return repository.save(entity: movie)
+    }
 }

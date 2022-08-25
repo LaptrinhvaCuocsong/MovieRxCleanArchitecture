@@ -54,4 +54,8 @@ class MoviesRepositoryImpl: MoviesRepository {
             return cdMoviesUseCase.popularMovies(input: input)
         }
     }
+
+    func save(_ movie: Movie) -> Observable<Result<Bool, Error>> {
+        return cdMoviesUseCase.save(movie: movie)
+    }
 }

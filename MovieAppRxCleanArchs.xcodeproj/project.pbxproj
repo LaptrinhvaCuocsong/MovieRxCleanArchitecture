@@ -98,6 +98,8 @@
 		EF82C2EE28704CF40069BA72 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF82C2ED28704CF40069BA72 /* ProfileCoordinator.swift */; };
 		EF82C2F0287057B90069BA72 /* ProfileDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF82C2EF287057B90069BA72 /* ProfileDataSource.swift */; };
 		EF8722EB2871A64B0074B54F /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8722EA2871A64B0074B54F /* UseCaseProvider.swift */; };
+		EF8F1BDA28B4A2700053A557 /* MovieListVCAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8F1BD928B4A2700053A557 /* MovieListVCAction.swift */; };
+		EF8F1BDC28B4A3C40053A557 /* MovieListFullWidthCellDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8F1BDB28B4A3C40053A557 /* MovieListFullWidthCellDataSource.swift */; };
 		EF987AFF28AE4B2D003F6EED /* MoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF987AFE28AE4B2D003F6EED /* MoviesUseCase.swift */; };
 		EF9938BF2839EB7E0077B3A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9938BE2839EB7E0077B3A9 /* AppDelegate.swift */; };
 		EF9938C12839EB7E0077B3A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9938C02839EB7E0077B3A9 /* SceneDelegate.swift */; };
@@ -301,6 +303,8 @@
 		EF82C2ED28704CF40069BA72 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
 		EF82C2EF287057B90069BA72 /* ProfileDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDataSource.swift; sourceTree = "<group>"; };
 		EF8722EA2871A64B0074B54F /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		EF8F1BD928B4A2700053A557 /* MovieListVCAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVCAction.swift; sourceTree = "<group>"; };
+		EF8F1BDB28B4A3C40053A557 /* MovieListFullWidthCellDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListFullWidthCellDataSource.swift; sourceTree = "<group>"; };
 		EF987AFE28AE4B2D003F6EED /* MoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUseCase.swift; sourceTree = "<group>"; };
 		EF9938BB2839EB7E0077B3A9 /* MovieAppRxCleanArchs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MovieAppRxCleanArchs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF9938BE2839EB7E0077B3A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -436,6 +440,7 @@
 				EF02CC39284E5D45007FF7FF /* MovieListVC.xib */,
 				EF02CC3C284E5D50007FF7FF /* MovieListVM.swift */,
 				EF02CC3E284E5D59007FF7FF /* MovieListCoordinator.swift */,
+				EF8F1BD928B4A2700053A557 /* MovieListVCAction.swift */,
 			);
 			path = MovieList;
 			sourceTree = "<group>";
@@ -663,6 +668,7 @@
 			children = (
 				EF62AD442881AFB800EA0AA5 /* MovieListFullWidthCell.swift */,
 				EF62AD452881AFB800EA0AA5 /* MovieListFullWidthCell.xib */,
+				EF8F1BDB28B4A3C40053A557 /* MovieListFullWidthCellDataSource.swift */,
 			);
 			path = MovieListFullWidthCell;
 			sourceTree = "<group>";
@@ -1406,6 +1412,7 @@
 				EFF2BC3D2891824A0055116A /* MovieListCellDataSource.swift in Sources */,
 				EF9938FD2839F1290077B3A9 /* Application.swift in Sources */,
 				EF82C2F0287057B90069BA72 /* ProfileDataSource.swift in Sources */,
+				EF8F1BDA28B4A2700053A557 /* MovieListVCAction.swift in Sources */,
 				EF27B9BF288CF14B0064611D /* UICollectionView+Ext.swift in Sources */,
 				EF27B9C1288CF4B30064611D /* UIViewController+Ext.swift in Sources */,
 				EF2D89C22858E5590070B5C8 /* Constant.swift in Sources */,
@@ -1436,6 +1443,7 @@
 				EF9938BF2839EB7E0077B3A9 /* AppDelegate.swift in Sources */,
 				EF2760DA28524C7700E77BCA /* BaseNC.swift in Sources */,
 				EFB0B901285640550075BA62 /* String+Ext.swift in Sources */,
+				EF8F1BDC28B4A3C40053A557 /* MovieListFullWidthCellDataSource.swift in Sources */,
 				EF2760BF28524B2D00E77BCA /* MovieFavoriteVC.swift in Sources */,
 				EF9939012839F15A0077B3A9 /* ActivityIndicator.swift in Sources */,
 				EF9EE8B5285F9C950083E3FA /* UIScreen+Ext.swift in Sources */,
