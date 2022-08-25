@@ -26,10 +26,14 @@ extension CDMovie {
     static var video: Attribute<NSNumber> { return Attribute("video") }
     static var voteAverage: Attribute<NSNumber> { return Attribute("voteAverage") }
     static var voteCount: Attribute<NSNumber> { return Attribute("voteCount") }
+    static var isFavorite: Attribute<NSNumber> { return Attribute("isFavorite") }
 }
 
 extension CDMovie: DomainConvertibleType {
     func asDomain() -> Movie {
+        if isFavorite?.boolValue == true {
+            print("😄 name = \(title ?? "")")
+        }
         return Movie(adult: adult?.boolValue,
                      backdropPath: backdropPath,
                      genreIds: genreIds?.map({ $0.intValue }),
@@ -43,7 +47,8 @@ extension CDMovie: DomainConvertibleType {
                      title: title,
                      video: video?.boolValue,
                      voteAverage: voteAverage?.doubleValue,
-                     voteCount: voteCount?.intValue)
+                     voteCount: voteCount?.intValue,
+                     isFavorite: isFavorite?.boolValue)
     }
 }
 
@@ -78,6 +83,8 @@ extension Movie: CoreDataRepresentable {
         if entity.createAt == nil {
             entity.createAt = Date()
         }
-        entity.isFavorite = NSNumber(value: self.getIsFavorite())
+        if let isFavorite = getIsFavorite() {
+            entity.isFavorite = NSNumber(value: isFavorite)
+        }
     }
 }

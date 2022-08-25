@@ -21,7 +21,15 @@ class MoviesUseCase: Domain.MoviesUseCase {
         return network.popularMovies(param: input)
     }
 
+    func popularMovies(ids: [Int]) -> Observable<Result<[Movie], Error>> {
+        return Observable.empty()
+    }
+
     func save(movies: [Movie]) -> Observable<Result<Bool, Error>> {
+        return Observable.empty()
+    }
+
+    func save(movie: Movie) -> Observable<Result<Bool, Error>> {
         return Observable.empty()
     }
 }

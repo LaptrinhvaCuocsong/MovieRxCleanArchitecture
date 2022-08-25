@@ -54,4 +54,21 @@ class MoviesRepositoryImpl: MoviesRepository {
             return cdMoviesUseCase.popularMovies(input: input)
         }
     }
+
+    func save(_ movie: Movie) -> Observable<Result<Bool, Error>> {
+        return cdMoviesUseCase.save(movie: movie)
+    }
+
+    func checkFavorite(for movies: [Movie]) -> Observable<Result<[Movie], Error>> {
+        let ids = movies.compactMap({ $0.id })
+        return cdMoviesUseCase.popularMovies(ids: ids)
+            .map({ $0.to { cdMovies -> [Movie] in
+                var result = movies
+                for i in 0 ..< result.count {
+                    let id = result[i].id
+                    result[i].setFavorite(cdMovies.first(where: { $0.id == id })?.getIsFavorite() == true)
+                }
+                return result
+            } })
+    }
 }

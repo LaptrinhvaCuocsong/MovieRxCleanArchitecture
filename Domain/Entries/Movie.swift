@@ -8,7 +8,7 @@
 import Foundation
 
 public struct Movie: Codable {
-    public init(adult: Bool?, backdropPath: String?, genreIds: [Int]?, id: Int?, originalLanguage: String?, originalTitle: String?, overview: String?, popularity: Double?, posterPath: String?, releaseDate: String?, title: String?, video: Bool?, voteAverage: Double?, voteCount: Int?) {
+    public init(adult: Bool?, backdropPath: String?, genreIds: [Int]?, id: Int?, originalLanguage: String?, originalTitle: String?, overview: String?, popularity: Double?, posterPath: String?, releaseDate: String?, title: String?, video: Bool?, voteAverage: Double?, voteCount: Int?, isFavorite: Bool?) {
         self.adult = adult
         self.backdropPath = backdropPath
         self.genreIds = genreIds
@@ -23,6 +23,7 @@ public struct Movie: Codable {
         self.video = video
         self.voteAverage = voteAverage
         self.voteCount = voteCount
+        self.isFavorite = isFavorite
     }
 
     public let adult: Bool?
@@ -41,8 +42,8 @@ public struct Movie: Codable {
     public let voteCount: Int?
     private var isFavorite: Bool?
 
-    public func getIsFavorite() -> Bool {
-        return isFavorite == true
+    public func getIsFavorite() -> Bool? {
+        return isFavorite
     }
 
     public mutating func setFavorite(_ isFavorite: Bool) {

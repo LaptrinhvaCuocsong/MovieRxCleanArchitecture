@@ -144,8 +144,9 @@ extension MovieListVC: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let bundleIdentifier = viewModel.bundleIdentifier(forCellAt: indexPath)
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: bundleIdentifier, for: indexPath) as? MovieListCell {
-            let movie = viewModel.getMovies()[indexPath.item]
-            cell.configCell(dataSource: DefaultMovieListCellDataSource(movie: movie))
+            if let dataSource = viewModel.cellDataSource(forCellAt: indexPath) {
+                cell.configCell(dataSource: dataSource)
+            }
             return cell
         } else {
             return UICollectionViewCell()

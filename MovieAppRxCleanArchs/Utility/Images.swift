@@ -52,7 +52,7 @@ struct Images {
         }
         
         static var icFavoriteMovie: UIImage? {
-            return Images.image(lightModeNamed: "ic_star_small_yellow")
+            return Images.image(lightModeNamed: "ic_star_small_yello")
         }
     }
 
