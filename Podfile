@@ -49,3 +49,9 @@ target 'CoreDataPlatform' do
   rx_swift
   pod 'QueryKit'
 end
+
+target 'RealmPlatform' do
+  use_frameworks!
+  rx_swift
+  pod 'RealmSwift'
+end

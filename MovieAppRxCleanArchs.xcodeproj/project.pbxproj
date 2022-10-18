@@ -118,6 +118,9 @@
 		EF9C4A0B28A8D7630026CD13 /* MovieConfiguration+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C4A0A28A8D7630026CD13 /* MovieConfiguration+Ext.swift */; };
 		EF9C4A0D28A8DF920026CD13 /* MoviesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C4A0C28A8DF920026CD13 /* MoviesRepository.swift */; };
 		EF9C4A0F28A8E0B80026CD13 /* MoviesRepositoryImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9C4A0E28A8E0B80026CD13 /* MoviesRepositoryImpl.swift */; };
+		EF9D174328FBB792009BA48D /* RealmPlatform.h in Headers */ = {isa = PBXBuildFile; fileRef = EF9D174228FBB792009BA48D /* RealmPlatform.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		EF9D174628FBB793009BA48D /* RealmPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF9D174028FBB792009BA48D /* RealmPlatform.framework */; };
+		EF9D174728FBB793009BA48D /* RealmPlatform.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EF9D174028FBB792009BA48D /* RealmPlatform.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EF9EE8AF285F99010083E3FA /* BaseSideMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE8AE285F99010083E3FA /* BaseSideMenuVC.swift */; };
 		EF9EE8B5285F9C950083E3FA /* UIScreen+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF9EE8B4285F9C950083E3FA /* UIScreen+Ext.swift */; };
 		EFA9B0242855853D00F19BBA /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA9B0232855853D00F19BBA /* Colors.swift */; };
@@ -160,6 +163,7 @@
 		EFFA7DD22874A06200086313 /* Data+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFA7DD12874A06200086313 /* Data+Ext.swift */; };
 		EFFA7DD42874A21400086313 /* HTTPURLResponse+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFA7DD32874A21400086313 /* HTTPURLResponse+Ext.swift */; };
 		EFFE49C32871F35E0081C1C5 /* Result+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFE49C22871F35E0081C1C5 /* Result+Ext.swift */; };
+		F2809700A603A5E750E1EE69 /* Pods_RealmPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2BF5264EFC5FE1F1AFB2A49 /* Pods_RealmPlatform.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -184,6 +188,13 @@
 			remoteGlobalIDString = EF9938EC2839F0730077B3A9;
 			remoteInfo = NetworkPlatform;
 		};
+		EF9D174428FBB793009BA48D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EF9938B32839EB7E0077B3A9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EF9D173F28FBB792009BA48D;
+			remoteInfo = RealmPlatform;
+		};
 		EFF2BC4B2891924F0055116A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EF9938B32839EB7E0077B3A9 /* Project object */;
@@ -201,6 +212,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				EF18AC92285486AE00D0D23C /* NetworkPlatform.framework in Embed Frameworks */,
+				EF9D174728FBB793009BA48D /* RealmPlatform.framework in Embed Frameworks */,
 				EFF2BC4E2891924F0055116A /* Utils.framework in Embed Frameworks */,
 				EF15E7C1289ADF75005966CD /* CoreDataPlatform.framework in Embed Frameworks */,
 				EF18AC8F285486AD00D0D23C /* Domain.framework in Embed Frameworks */,
@@ -220,9 +232,12 @@
 		77587DC30B0F5BD50C25B0B1 /* Pods_Utils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Utils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8520B0C902A5FB3B317338CF /* Pods-Domain.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.debug.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.debug.xcconfig"; sourceTree = "<group>"; };
 		B715F0C84C6DB76255FE8F4B /* Pods_Domain.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Domain.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B764F4C47656592B25BE7B25 /* Pods-RealmPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatform.release.xcconfig"; path = "Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		BFDE60401006BCA995DDAE5C /* Pods-Utils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utils.debug.xcconfig"; path = "Target Support Files/Pods-Utils/Pods-Utils.debug.xcconfig"; sourceTree = "<group>"; };
 		C86866FA6BEC44A9C6C3E94C /* Pods-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.release.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.release.xcconfig"; sourceTree = "<group>"; };
 		D21CA9376357F976CB7652F0 /* Pods-MovieAppRxCleanArchs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppRxCleanArchs.debug.xcconfig"; path = "Target Support Files/Pods-MovieAppRxCleanArchs/Pods-MovieAppRxCleanArchs.debug.xcconfig"; sourceTree = "<group>"; };
+		D2BF5264EFC5FE1F1AFB2A49 /* Pods_RealmPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDD5F8C32C351D9C756B46E9 /* Pods-RealmPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatform.debug.xcconfig"; path = "Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.debug.xcconfig"; sourceTree = "<group>"; };
 		DEA889F38C515F005C904DFB /* Pods-CoreDataPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CoreDataPlatform.debug.xcconfig"; path = "Target Support Files/Pods-CoreDataPlatform/Pods-CoreDataPlatform.debug.xcconfig"; sourceTree = "<group>"; };
 		E4A4C207C8AECCDC1EB4D9E8 /* Pods-NetworkPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NetworkPlatform.release.xcconfig"; path = "Target Support Files/Pods-NetworkPlatform/Pods-NetworkPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		EF02059C28ACFB3E00B99483 /* UIScrollView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Ext.swift"; sourceTree = "<group>"; };
@@ -328,6 +343,8 @@
 		EF9C4A0A28A8D7630026CD13 /* MovieConfiguration+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MovieConfiguration+Ext.swift"; sourceTree = "<group>"; };
 		EF9C4A0C28A8DF920026CD13 /* MoviesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepository.swift; sourceTree = "<group>"; };
 		EF9C4A0E28A8E0B80026CD13 /* MoviesRepositoryImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesRepositoryImpl.swift; sourceTree = "<group>"; };
+		EF9D174028FBB792009BA48D /* RealmPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RealmPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EF9D174228FBB792009BA48D /* RealmPlatform.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RealmPlatform.h; sourceTree = "<group>"; };
 		EF9EE8AE285F99010083E3FA /* BaseSideMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSideMenuVC.swift; sourceTree = "<group>"; };
 		EF9EE8B4285F9C950083E3FA /* UIScreen+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Ext.swift"; sourceTree = "<group>"; };
 		EFA9B0232855853D00F19BBA /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
@@ -392,6 +409,7 @@
 				EFF2BC4D2891924F0055116A /* Utils.framework in Frameworks */,
 				EF18AC8E285486AD00D0D23C /* Domain.framework in Frameworks */,
 				EF15E7C0289ADF75005966CD /* CoreDataPlatform.framework in Frameworks */,
+				EF9D174628FBB793009BA48D /* RealmPlatform.framework in Frameworks */,
 				EF18AC91285486AE00D0D23C /* NetworkPlatform.framework in Frameworks */,
 				3BCD2097AC6D057082296C8F /* Pods_MovieAppRxCleanArchs.framework in Frameworks */,
 			);
@@ -410,6 +428,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C614DB72DD84E5FE59720697 /* Pods_NetworkPlatform.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF9D173D28FBB792009BA48D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F2809700A603A5E750E1EE69 /* Pods_RealmPlatform.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -722,6 +748,7 @@
 				EF9938EE2839F0730077B3A9 /* NetworkPlatform */,
 				EFF2BC482891924F0055116A /* Utils */,
 				EF15E7BB289ADF75005966CD /* CoreDataPlatform */,
+				EF9D174128FBB792009BA48D /* RealmPlatform */,
 				EF9938BC2839EB7E0077B3A9 /* Products */,
 				F9007C37F3847B98BB91AE63 /* Pods */,
 				FBE656FC15E7BEDE39F08EA9 /* Frameworks */,
@@ -736,6 +763,7 @@
 				EF9938ED2839F0730077B3A9 /* NetworkPlatform.framework */,
 				EFF2BC472891924F0055116A /* Utils.framework */,
 				EF15E7BA289ADF75005966CD /* CoreDataPlatform.framework */,
+				EF9D174028FBB792009BA48D /* RealmPlatform.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -888,6 +916,14 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		EF9D174128FBB792009BA48D /* RealmPlatform */ = {
+			isa = PBXGroup;
+			children = (
+				EF9D174228FBB792009BA48D /* RealmPlatform.h */,
+			);
+			path = RealmPlatform;
+			sourceTree = "<group>";
+		};
 		EFB0660F289F55A800C12AA8 /* ServiceLocator */ = {
 			isa = PBXGroup;
 			children = (
@@ -968,6 +1004,8 @@
 				FD23CC9FA33C0A5E6889A28B /* Pods-Utils.release.xcconfig */,
 				DEA889F38C515F005C904DFB /* Pods-CoreDataPlatform.debug.xcconfig */,
 				413F05C0481B52B7E405734C /* Pods-CoreDataPlatform.release.xcconfig */,
+				DDD5F8C32C351D9C756B46E9 /* Pods-RealmPlatform.debug.xcconfig */,
+				B764F4C47656592B25BE7B25 /* Pods-RealmPlatform.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -980,6 +1018,7 @@
 				254DB75126B942DB21BAE10A /* Pods_NetworkPlatform.framework */,
 				77587DC30B0F5BD50C25B0B1 /* Pods_Utils.framework */,
 				0C97190C4A2969B6592F3C4A /* Pods_CoreDataPlatform.framework */,
+				D2BF5264EFC5FE1F1AFB2A49 /* Pods_RealmPlatform.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1008,6 +1047,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF9938F02839F0730077B3A9 /* NetworkPlatform.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF9D173B28FBB792009BA48D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EF9D174328FBB792009BA48D /* RealmPlatform.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1059,6 +1106,7 @@
 				EF9938F22839F0730077B3A9 /* PBXTargetDependency */,
 				EFF2BC4C2891924F0055116A /* PBXTargetDependency */,
 				EF15E7BF289ADF75005966CD /* PBXTargetDependency */,
+				EF9D174528FBB793009BA48D /* PBXTargetDependency */,
 			);
 			name = MovieAppRxCleanArchs;
 			productName = MovieAppRxCleanArchs;
@@ -1101,6 +1149,25 @@
 			name = NetworkPlatform;
 			productName = NetworkPlatform;
 			productReference = EF9938ED2839F0730077B3A9 /* NetworkPlatform.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		EF9D173F28FBB792009BA48D /* RealmPlatform */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EF9D174A28FBB793009BA48D /* Build configuration list for PBXNativeTarget "RealmPlatform" */;
+			buildPhases = (
+				5740798B553E010B88A2BC53 /* [CP] Check Pods Manifest.lock */,
+				EF9D173B28FBB792009BA48D /* Headers */,
+				EF9D173C28FBB792009BA48D /* Sources */,
+				EF9D173D28FBB792009BA48D /* Frameworks */,
+				EF9D173E28FBB792009BA48D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RealmPlatform;
+			productName = RealmPlatform;
+			productReference = EF9D174028FBB792009BA48D /* RealmPlatform.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		EFF2BC462891924F0055116A /* Utils */ = {
@@ -1146,6 +1213,9 @@
 						CreatedOnToolsVersion = 13.3;
 						LastSwiftMigration = 1330;
 					};
+					EF9D173F28FBB792009BA48D = {
+						CreatedOnToolsVersion = 14.0.1;
+					};
 					EFF2BC462891924F0055116A = {
 						CreatedOnToolsVersion = 13.3;
 						LastSwiftMigration = 1330;
@@ -1171,6 +1241,7 @@
 				EF9938EC2839F0730077B3A9 /* NetworkPlatform */,
 				EFF2BC462891924F0055116A /* Utils */,
 				EF15E7B9289ADF75005966CD /* CoreDataPlatform */,
+				EF9D173F28FBB792009BA48D /* RealmPlatform */,
 			);
 		};
 /* End PBXProject section */
@@ -1219,6 +1290,13 @@
 			files = (
 				EF6387DA28637556008D6314 /* NetworkPlatform.release.xcconfig in Resources */,
 				EF6387D928637554008D6314 /* NetworkPlatform.debug.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EF9D173E28FBB792009BA48D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1313,6 +1391,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MovieAppRxCleanArchs/Pods-MovieAppRxCleanArchs-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5740798B553E010B88A2BC53 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RealmPlatform-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6843CFA1208B205877BF593E /* [CP] Check Pods Manifest.lock */ = {
@@ -1505,6 +1605,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		EF9D173C28FBB792009BA48D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EFF2BC432891924F0055116A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1532,6 +1639,11 @@
 			isa = PBXTargetDependency;
 			target = EF9938EC2839F0730077B3A9 /* NetworkPlatform */;
 			targetProxy = EF9938F12839F0730077B3A9 /* PBXContainerItemProxy */;
+		};
+		EF9D174528FBB793009BA48D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EF9D173F28FBB792009BA48D /* RealmPlatform */;
+			targetProxy = EF9D174428FBB793009BA48D /* PBXContainerItemProxy */;
 		};
 		EFF2BC4C2891924F0055116A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1941,6 +2053,70 @@
 			};
 			name = Release;
 		};
+		EF9D174828FBB793009BA48D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDD5F8C32C351D9C756B46E9 /* Pods-RealmPlatform.debug.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hungnm.RealmPlatform;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		EF9D174928FBB793009BA48D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B764F4C47656592B25BE7B25 /* Pods-RealmPlatform.release.xcconfig */;
+			buildSettings = {
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hungnm.RealmPlatform;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		EFF2BC502891924F0055116A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = BFDE60401006BCA995DDAE5C /* Pods-Utils.debug.xcconfig */;
@@ -2054,6 +2230,15 @@
 			buildConfigurations = (
 				EF9938F62839F0730077B3A9 /* Debug */,
 				EF9938F72839F0730077B3A9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EF9D174A28FBB793009BA48D /* Build configuration list for PBXNativeTarget "RealmPlatform" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EF9D174828FBB793009BA48D /* Debug */,
+				EF9D174928FBB793009BA48D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

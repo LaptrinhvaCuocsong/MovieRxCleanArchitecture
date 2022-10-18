@@ -39,7 +39,7 @@ struct Helper {
             for (i, fSize) in fileSizes.enumerated() {
                 let s = Int(fSize.subString(pattern: "\\d+$").last ?? "") ?? 0
                 if sMax <= s {
-                    fileSize = fileSizes[max(0, i - 1)]
+                    fileSize = fileSizes[i]
                     break
                 }
             }
