@@ -8,6 +8,11 @@
 import Foundation
 import RealmSwift
 
+protocol Persistable: Object {
+    var uid: String { get }
+    static func createEmptyObject() -> Self
+}
+
 protocol DomainConvertibleType {
     associatedtype DomainType
     
@@ -15,8 +20,8 @@ protocol DomainConvertibleType {
 }
 
 protocol RealmRepresentableType {
-    associatedtype RealmType: Object
+    associatedtype RealmType: Persistable
     
-    var uid: String? { get }
+    var uid: String { get }
     func update(entity: RealmType)
 }
