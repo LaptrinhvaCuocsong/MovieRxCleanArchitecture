@@ -11,10 +11,16 @@
 		3BCD2097AC6D057082296C8F /* Pods_MovieAppRxCleanArchs.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A620505813544DBCA550A6C /* Pods_MovieAppRxCleanArchs.framework */; };
 		BD04A35F64A8AC863023DD6A /* Pods_Domain.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B715F0C84C6DB76255FE8F4B /* Pods_Domain.framework */; };
 		C614DB72DD84E5FE59720697 /* Pods_NetworkPlatform.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 254DB75126B942DB21BAE10A /* Pods_NetworkPlatform.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		CE0B35FD2906838200A189CB /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B35FC2906838100A189CB /* Observable+Ext.swift */; };
+		CE0B35FF29068C2A00A189CB /* RepositoryProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B35FE29068C2A00A189CB /* RepositoryProvider.swift */; };
+		CE0B360129068CEB00A189CB /* RMovieConfiguration+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0B360029068CEB00A189CB /* RMovieConfiguration+Ext.swift */; };
 		CE46886128FE5B980064207A /* RealmDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE46886028FE5B980064207A /* RealmDataStack.swift */; };
+		CE5CF02929064C0A005FCBCB /* UseCaseProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CF02829064C0A005FCBCB /* UseCaseProvider.swift */; };
+		CE5CF02B29064CDB005FCBCB /* MovieConfigurationUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CF02A29064CDB005FCBCB /* MovieConfigurationUseCase.swift */; };
+		CE5CF02E29064E04005FCBCB /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5CF02D29064E04005FCBCB /* Repository.swift */; };
 		CE73683829013BB700B4BFF1 /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73683729013BB700B4BFF1 /* DomainConvertibleType.swift */; };
 		CE73683B2901411200B4BFF1 /* RMovieConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73683A2901411200B4BFF1 /* RMovieConfiguration.swift */; };
-		CE73683E290144BC00B4BFF1 /* Object+Rx.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73683D290144BB00B4BFF1 /* Object+Rx.swift */; };
+		CE73683E290144BC00B4BFF1 /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73683D290144BB00B4BFF1 /* Realm+Ext.swift */; };
 		D2FFADB334BC1399105F7248 /* Pods_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77587DC30B0F5BD50C25B0B1 /* Pods_Utils.framework */; };
 		EF02059D28ACFB3E00B99483 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02059C28ACFB3E00B99483 /* UIScrollView+Ext.swift */; };
 		EF02229428B7E0B500CEC98F /* Sequence+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02229328B7E0B500CEC98F /* Sequence+Ext.swift */; };
@@ -239,10 +245,16 @@
 		B764F4C47656592B25BE7B25 /* Pods-RealmPlatform.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatform.release.xcconfig"; path = "Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.release.xcconfig"; sourceTree = "<group>"; };
 		BFDE60401006BCA995DDAE5C /* Pods-Utils.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Utils.debug.xcconfig"; path = "Target Support Files/Pods-Utils/Pods-Utils.debug.xcconfig"; sourceTree = "<group>"; };
 		C86866FA6BEC44A9C6C3E94C /* Pods-Domain.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Domain.release.xcconfig"; path = "Target Support Files/Pods-Domain/Pods-Domain.release.xcconfig"; sourceTree = "<group>"; };
+		CE0B35FC2906838100A189CB /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
+		CE0B35FE29068C2A00A189CB /* RepositoryProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProvider.swift; sourceTree = "<group>"; };
+		CE0B360029068CEB00A189CB /* RMovieConfiguration+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RMovieConfiguration+Ext.swift"; sourceTree = "<group>"; };
 		CE46886028FE5B980064207A /* RealmDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmDataStack.swift; sourceTree = "<group>"; };
+		CE5CF02829064C0A005FCBCB /* UseCaseProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseProvider.swift; sourceTree = "<group>"; };
+		CE5CF02A29064CDB005FCBCB /* MovieConfigurationUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieConfigurationUseCase.swift; sourceTree = "<group>"; };
+		CE5CF02D29064E04005FCBCB /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		CE73683729013BB700B4BFF1 /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
 		CE73683A2901411200B4BFF1 /* RMovieConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMovieConfiguration.swift; sourceTree = "<group>"; };
-		CE73683D290144BB00B4BFF1 /* Object+Rx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Object+Rx.swift"; sourceTree = "<group>"; };
+		CE73683D290144BB00B4BFF1 /* Realm+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
 		D21CA9376357F976CB7652F0 /* Pods-MovieAppRxCleanArchs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppRxCleanArchs.debug.xcconfig"; path = "Target Support Files/Pods-MovieAppRxCleanArchs/Pods-MovieAppRxCleanArchs.debug.xcconfig"; sourceTree = "<group>"; };
 		D2BF5264EFC5FE1F1AFB2A49 /* Pods_RealmPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD5F8C32C351D9C756B46E9 /* Pods-RealmPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatform.debug.xcconfig"; path = "Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.debug.xcconfig"; sourceTree = "<group>"; };
@@ -466,6 +478,24 @@
 			path = RealmDataStack;
 			sourceTree = "<group>";
 		};
+		CE5CF02729064BFA005FCBCB /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				CE5CF02829064C0A005FCBCB /* UseCaseProvider.swift */,
+				CE5CF02A29064CDB005FCBCB /* MovieConfigurationUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		CE5CF02C29064DA3005FCBCB /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				CE5CF02D29064E04005FCBCB /* Repository.swift */,
+				CE0B35FE29068C2A00A189CB /* RepositoryProvider.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		CE7368352901389500B4BFF1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
@@ -487,16 +517,17 @@
 			isa = PBXGroup;
 			children = (
 				CE73683A2901411200B4BFF1 /* RMovieConfiguration.swift */,
+				CE0B360029068CEB00A189CB /* RMovieConfiguration+Ext.swift */,
 			);
 			path = RMovieConfiguration;
 			sourceTree = "<group>";
 		};
-		CE73683C2901448800B4BFF1 /* RxRealm */ = {
+		CE73683C2901448800B4BFF1 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				CE73683D290144BB00B4BFF1 /* Object+Rx.swift */,
+				CE73683D290144BB00B4BFF1 /* Realm+Ext.swift */,
 			);
-			path = RxRealm;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		EF02CC33284E5670007FF7FF /* UI */ = {
@@ -968,7 +999,9 @@
 		EF9D174128FBB792009BA48D /* RealmPlatform */ = {
 			isa = PBXGroup;
 			children = (
-				CE73683C2901448800B4BFF1 /* RxRealm */,
+				CE5CF02C29064DA3005FCBCB /* Repository */,
+				CE5CF02729064BFA005FCBCB /* UseCases */,
+				CE73683C2901448800B4BFF1 /* Extensions */,
 				CE7368352901389500B4BFF1 /* Entities */,
 				CE46885F28FE5B840064207A /* RealmDataStack */,
 				EF9D174228FBB792009BA48D /* RealmPlatform.h */,
@@ -1030,6 +1063,7 @@
 				EFF2BC53289192780055116A /* Codable+Ext.swift */,
 				EF772C6428A16A5100266088 /* Result+Ext.swift */,
 				EF02229328B7E0B500CEC98F /* Sequence+Ext.swift */,
+				CE0B35FC2906838100A189CB /* Observable+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1662,10 +1696,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE5CF02E29064E04005FCBCB /* Repository.swift in Sources */,
 				CE46886128FE5B980064207A /* RealmDataStack.swift in Sources */,
+				CE5CF02929064C0A005FCBCB /* UseCaseProvider.swift in Sources */,
+				CE0B360129068CEB00A189CB /* RMovieConfiguration+Ext.swift in Sources */,
 				CE73683829013BB700B4BFF1 /* DomainConvertibleType.swift in Sources */,
-				CE73683E290144BC00B4BFF1 /* Object+Rx.swift in Sources */,
+				CE73683E290144BC00B4BFF1 /* Realm+Ext.swift in Sources */,
 				CE73683B2901411200B4BFF1 /* RMovieConfiguration.swift in Sources */,
+				CE0B35FF29068C2A00A189CB /* RepositoryProvider.swift in Sources */,
+				CE5CF02B29064CDB005FCBCB /* MovieConfigurationUseCase.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1673,6 +1712,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE0B35FD2906838200A189CB /* Observable+Ext.swift in Sources */,
 				EF772C6528A16A5100266088 /* Result+Ext.swift in Sources */,
 				EF02229428B7E0B500CEC98F /* Sequence+Ext.swift in Sources */,
 				EFF2BC54289192780055116A /* Codable+Ext.swift in Sources */,

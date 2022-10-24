@@ -42,6 +42,7 @@ end
 
 target 'Utils' do
   use_frameworks!
+  rx_swift
 end
 
 target 'CoreDataPlatform' do

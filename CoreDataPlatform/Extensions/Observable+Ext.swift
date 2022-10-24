@@ -1,12 +1,6 @@
 import Foundation
 import RxSwift
 
-extension ObservableType {
-    func mapToVoid() -> Observable<Void> {
-        return map { _ in }
-    }
-}
-
 extension Result where Success: Sequence, Success.Element: DomainConvertibleType {
     func mapToDomain() -> Result<[Success.Element.DomainType], Error> {
         switch self {

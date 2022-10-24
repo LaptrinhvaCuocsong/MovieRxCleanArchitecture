@@ -7,6 +7,7 @@
 
 import Foundation
 import RealmSwift
+import RxSwift
 
 protocol Persistable: Object {
     var uid: String { get }
@@ -24,4 +25,11 @@ protocol RealmRepresentableType {
     
     var uid: String { get }
     func update(entity: RealmType)
+    func sync(in realmDb: Realm) -> Observable<Result<RealmType, Error>>
+}
+
+extension RealmRepresentableType {
+    func sync(in realmDb: Realm) -> Observable<Result<RealmType, Error>> {
+        return realmDb.sync(entity: self, update: update)
+    }
 }

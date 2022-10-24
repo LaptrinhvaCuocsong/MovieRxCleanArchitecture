@@ -10,6 +10,7 @@ import RealmSwift
 
 
 class RMovieConfiguration: Object {
+    @Persisted(primaryKey: true) var id: String
     @Persisted var images: RImageMovieConfiguration?
 }
 
