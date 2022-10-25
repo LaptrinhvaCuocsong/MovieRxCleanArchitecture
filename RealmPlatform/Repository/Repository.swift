@@ -8,6 +8,7 @@
 import Foundation
 import RealmSwift
 import RxSwift
+import Utils
 
 final class Repository<R: RealmRepresentableType> {
     private let realmDb: Realm
@@ -15,6 +16,10 @@ final class Repository<R: RealmRepresentableType> {
 
     init(realmDb: Realm) {
         self.realmDb = realmDb
+    }
+    
+    func fetch(query: @escaping (R.RealmType) -> Bool) -> Observable<Result<[R], Error>> {
+        return realmDb.entities(query: query).map({ $0.to(tranform: { $0.map({ $0. }) }) })
     }
 
     func save(entity: R) -> Observable<Result<Bool, Error>> {

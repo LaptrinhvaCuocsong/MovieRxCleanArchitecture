@@ -21,6 +21,7 @@ class RealmDataStack {
             fileUrl.appendPathComponent("MovieAppRxCleanArchs")
             fileUrl.appendPathExtension("realm")
             config.fileURL = fileUrl
+            print("📂📂📂 Realm storeUrl = \(fileUrl.absoluteString)")
         }
         realm = try! Realm(configuration: config)
     }

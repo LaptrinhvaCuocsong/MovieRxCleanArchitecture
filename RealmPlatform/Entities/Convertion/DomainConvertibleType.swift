@@ -14,7 +14,7 @@ protocol Persistable: Object {
     static func createEmptyObject() -> Self
 }
 
-protocol DomainConvertibleType {
+protocol DomainConvertibleType: Persistable {
     associatedtype DomainType
     
     func asDomain() -> DomainType

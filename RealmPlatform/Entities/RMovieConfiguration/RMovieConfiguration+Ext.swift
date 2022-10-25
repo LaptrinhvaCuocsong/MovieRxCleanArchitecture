@@ -28,7 +28,18 @@ extension MovieConfiguration: RealmRepresentableType {
             return
         }
         entity.id = uid
-        let images = RImageMovieConfiguration()
-        images.baseUrl = images.baseUrl
+        let rImage = RImageMovieConfiguration()
+        rImage.baseUrl = images.baseUrl
+        rImage.secureBaseUrl = images.secureBaseUrl
+        rImage.backdropSizes.removeAll()
+        rImage.backdropSizes.append(objectsIn: images.backdropSizes ?? [])
+        rImage.logoSizes.removeAll()
+        rImage.logoSizes.append(objectsIn: images.logoSizes ?? [])
+        rImage.posterSizes.removeAll()
+        rImage.posterSizes.append(objectsIn: images.posterSizes ?? [])
+        rImage.profileSizes.removeAll()
+        rImage.profileSizes.append(objectsIn: images.profileSizes ?? [])
+        rImage.stillSizes.removeAll()
+        rImage.stillSizes.append(objectsIn: images.stillSizes ?? [])
     }
 }
