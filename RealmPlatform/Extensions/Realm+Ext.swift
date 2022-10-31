@@ -12,7 +12,7 @@ import RxSwift
 extension Realm {
     typealias SError = Swift.Error
 
-    func entities<R: Persistable>(query: @escaping (R) -> Bool) -> Observable<Result<[R], SError>> {
+    func entities<R: Persistable>(ofType: R.Type = R.self, query: @escaping (R) -> Bool) -> Observable<Result<[R], SError>> {
         return Observable<Result<[R], SError>>.create { observer in
             let objects = self.objects(R.self).filter(query)
             var items: [R] = []
@@ -25,7 +25,7 @@ extension Realm {
         }
     }
 
-    func save<R: Persistable>(entity: R) -> Observable<Result<Bool, SError>> {
+    func save<R: Persistable>(ofType: R.Type = R.self, entity: R) -> Observable<Result<Bool, SError>> {
         return Observable<Result<Bool, SError>>.create { observer in
             do {
                 try self.write {

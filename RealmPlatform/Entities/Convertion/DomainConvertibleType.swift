@@ -9,15 +9,15 @@ import Foundation
 import RealmSwift
 import RxSwift
 
-protocol Persistable: Object {
-    var uid: String { get }
-    static func createEmptyObject() -> Self
-}
-
-protocol DomainConvertibleType: Persistable {
+protocol DomainConvertibleType {
     associatedtype DomainType
     
     func asDomain() -> DomainType
+}
+
+protocol Persistable: Object, DomainConvertibleType {
+    var uid: String { get }
+    static func createEmptyObject() -> Self
 }
 
 protocol RealmRepresentableType {

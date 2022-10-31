@@ -16,6 +16,10 @@ extension RMovieConfiguration: Persistable {
     static func createEmptyObject() -> Self {
         return RMovieConfiguration() as! Self
     }
+    
+    func asDomain() -> MovieConfiguration {
+        return MovieConfiguration(images: nil)
+    }
 }
 
 extension MovieConfiguration: RealmRepresentableType {

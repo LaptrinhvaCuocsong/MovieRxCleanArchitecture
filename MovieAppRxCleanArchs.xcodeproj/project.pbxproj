@@ -85,6 +85,8 @@
 		EF2D89BE2858E38A0070B5C8 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EF2D89BA2858E38A0070B5C8 /* Roboto-Light.ttf */; };
 		EF2D89C02858E3A30070B5C8 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D89BF2858E3A30070B5C8 /* Fonts.swift */; };
 		EF2D89C22858E5590070B5C8 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D89C12858E5590070B5C8 /* Constant.swift */; };
+		EF3812C5290D711E003A9D96 /* Observable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3812C4290D711E003A9D96 /* Observable+Ext.swift */; };
+		EF3812C7290D99D5003A9D96 /* RError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3812C6290D99D5003A9D96 /* RError.swift */; };
 		EF3D485D285ED1AC0076B28C /* ProfileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D485B285ED1AC0076B28C /* ProfileVC.swift */; };
 		EF3D485E285ED1AC0076B28C /* ProfileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = EF3D485C285ED1AC0076B28C /* ProfileVC.xib */; };
 		EF3D4860285ED1C00076B28C /* ProfileVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF3D485F285ED1C00076B28C /* ProfileVM.swift */; };
@@ -318,6 +320,8 @@
 		EF2D89BA2858E38A0070B5C8 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		EF2D89BF2858E3A30070B5C8 /* Fonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		EF2D89C12858E5590070B5C8 /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		EF3812C4290D711E003A9D96 /* Observable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Observable+Ext.swift"; sourceTree = "<group>"; };
+		EF3812C6290D99D5003A9D96 /* RError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RError.swift; sourceTree = "<group>"; };
 		EF3D485B285ED1AC0076B28C /* ProfileVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVC.swift; sourceTree = "<group>"; };
 		EF3D485C285ED1AC0076B28C /* ProfileVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileVC.xib; sourceTree = "<group>"; };
 		EF3D485F285ED1C00076B28C /* ProfileVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileVM.swift; sourceTree = "<group>"; };
@@ -526,6 +530,7 @@
 			isa = PBXGroup;
 			children = (
 				CE73683D290144BB00B4BFF1 /* Realm+Ext.swift */,
+				EF3812C4290D711E003A9D96 /* Observable+Ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1005,6 +1010,7 @@
 				CE7368352901389500B4BFF1 /* Entities */,
 				CE46885F28FE5B840064207A /* RealmDataStack */,
 				EF9D174228FBB792009BA48D /* RealmPlatform.h */,
+				EF3812C6290D99D5003A9D96 /* RError.swift */,
 			);
 			path = RealmPlatform;
 			sourceTree = "<group>";
@@ -1699,7 +1705,9 @@
 				CE5CF02E29064E04005FCBCB /* Repository.swift in Sources */,
 				CE46886128FE5B980064207A /* RealmDataStack.swift in Sources */,
 				CE5CF02929064C0A005FCBCB /* UseCaseProvider.swift in Sources */,
+				EF3812C7290D99D5003A9D96 /* RError.swift in Sources */,
 				CE0B360129068CEB00A189CB /* RMovieConfiguration+Ext.swift in Sources */,
+				EF3812C5290D711E003A9D96 /* Observable+Ext.swift in Sources */,
 				CE73683829013BB700B4BFF1 /* DomainConvertibleType.swift in Sources */,
 				CE73683E290144BC00B4BFF1 /* Realm+Ext.swift in Sources */,
 				CE73683B2901411200B4BFF1 /* RMovieConfiguration.swift in Sources */,

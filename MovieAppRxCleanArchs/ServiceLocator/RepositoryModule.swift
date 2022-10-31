@@ -10,12 +10,15 @@ import CoreDataPlatform
 import Domain
 import Foundation
 import NetworkPlatform
+import RealmPlatform
 
 enum RepositoryName: String {
     case nwUseCaseProvider
     case cdUseCaseProvider
+    case realmUseCaseProvider
     case nwMovieConfigurationUseCase
     case cdMovieConfigurationUseCase
+    case realmMovieConfigurationUseCase
     case nwMoviesUseCase
     case cdMoviesUseCase
 }
@@ -32,6 +35,16 @@ class RepositoryModule: DIModule {
             CoreDataPlatform.UseCaseProvider()
         }
 
+        serviceLocator.registerLazySingleton(UseCaseProvider.self,
+                                             name: RepositoryName.realmUseCaseProvider.rawValue) { _ in
+            RealmPlatform.UseCaseProvider()
+        }
+
+        registerForMovieConfigurationRepos(serviceLocator: serviceLocator)
+        registerForMoviesRepos(serviceLocator: serviceLocator)
+    }
+
+    private func registerForMovieConfigurationRepos(serviceLocator: ServiceLocator) {
         serviceLocator.registerFactory(MovieConfigurationUseCase.self,
                                        name: RepositoryName.nwMovieConfigurationUseCase.rawValue) { service in
             service.get(type: NetworkPlatform.UseCaseProvider.self,
@@ -44,13 +57,23 @@ class RepositoryModule: DIModule {
                         name: RepositoryName.cdUseCaseProvider.rawValue)!.makeMovieConfigurationUseCase()!
         }
 
+        serviceLocator.registerFactory(MovieConfigurationUseCase.self,
+                                       name: RepositoryName.realmMovieConfigurationUseCase.rawValue) { service in
+            service.get(type: RealmPlatform.UseCaseProvider.self,
+                        name: RepositoryName.realmUseCaseProvider.rawValue)!.makeMovieConfigurationUseCase()!
+        }
+
         serviceLocator.registerLazySingleton(MovieConfigurationRepository.self) { service in
             MovieConfigurationRepositoryImpl(networkUseCase: service.get(type: MovieConfigurationUseCase.self,
                                                                          name: RepositoryName.nwMovieConfigurationUseCase.rawValue)!,
                                              coreDataUseCase: service.get(type: MovieConfigurationUseCase.self,
-                                                                          name: RepositoryName.cdMovieConfigurationUseCase.rawValue)!)
+                                                                          name: RepositoryName.cdMovieConfigurationUseCase.rawValue)!,
+                                             realmUseCase: service.get(type: MovieConfigurationUseCase.self,
+                                                                       name: RepositoryName.realmMovieConfigurationUseCase.rawValue)!)
         }
+    }
 
+    private func registerForMoviesRepos(serviceLocator: ServiceLocator) {
         serviceLocator.registerFactory(MoviesUseCase.self,
                                        name: RepositoryName.nwMoviesUseCase.rawValue) { service in
             service.get(type: NetworkPlatform.UseCaseProvider.self,

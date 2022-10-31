@@ -10,7 +10,7 @@ import RealmSwift
 import RxSwift
 import Utils
 
-final class Repository<R: RealmRepresentableType> {
+final class Repository<R: RealmRepresentableType> where R.RealmType.DomainType == R {
     private let realmDb: Realm
     private let scheduler = SerialDispatchQueueScheduler(qos: .background)
 
@@ -19,7 +19,7 @@ final class Repository<R: RealmRepresentableType> {
     }
     
     func fetch(query: @escaping (R.RealmType) -> Bool) -> Observable<Result<[R], Error>> {
-        return realmDb.entities(query: query).map({ $0.to(tranform: { $0.map({ $0. }) }) })
+        realmDb.entities(ofType: R.RealmType.self, query: query).map({ $0.toDomains() })
     }
 
     func save(entity: R) -> Observable<Result<Bool, Error>> {

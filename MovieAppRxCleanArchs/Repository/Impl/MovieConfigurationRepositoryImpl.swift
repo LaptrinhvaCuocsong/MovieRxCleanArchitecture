@@ -15,20 +15,23 @@ import Utils
 class MovieConfigurationRepositoryImpl: MovieConfigurationRepository {
     private let networkUseCase: MovieConfigurationUseCase
     private let coreDataUseCase: MovieConfigurationUseCase
+    private let realmUseCase: MovieConfigurationUseCase
     private let saveMovieConfiguration = PublishSubject<MovieConfiguration>()
     private let disposeBag = DisposeBag()
 
     init(networkUseCase: MovieConfigurationUseCase,
-         coreDataUseCase: MovieConfigurationUseCase) {
+         coreDataUseCase: MovieConfigurationUseCase,
+         realmUseCase: MovieConfigurationUseCase) {
         self.networkUseCase = networkUseCase
         self.coreDataUseCase = coreDataUseCase
+        self.realmUseCase = realmUseCase
         binding()
     }
 
     private func binding() {
         saveMovieConfiguration
             .flatMapLatest { [unowned self] movieConfiguration -> Observable<Result<Bool, Error>> in
-                coreDataUseCase.saveMovieConfiguration(movieConfiguration)
+                realmUseCase.saveMovieConfiguration(movieConfiguration)
             }
             .subscribe(onNext: { result in
                 switch result {
@@ -42,8 +45,10 @@ class MovieConfigurationRepositoryImpl: MovieConfigurationRepository {
     }
 
     func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration.Images?, Error>>? {
+//        return realmUseCase.fetchMovieConfiguration().map({ $0.to { configuration in configuration.images } })
+        
         if !NetworkUtility.shared.isNetworkConnected {
-            return coreDataUseCase.fetchMovieConfiguration().map({ $0.to { configuration in configuration.images } })
+            return realmUseCase.fetchMovieConfiguration().map({ $0.to { configuration in configuration.images } })
         }
         return networkUseCase.fetchMovieConfiguration()
             .do(onNext: { [weak self] result in
