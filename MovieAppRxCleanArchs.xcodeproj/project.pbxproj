@@ -21,6 +21,11 @@
 		CE73683829013BB700B4BFF1 /* DomainConvertibleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73683729013BB700B4BFF1 /* DomainConvertibleType.swift */; };
 		CE73683B2901411200B4BFF1 /* RMovieConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73683A2901411200B4BFF1 /* RMovieConfiguration.swift */; };
 		CE73683E290144BC00B4BFF1 /* Realm+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE73683D290144BB00B4BFF1 /* Realm+Ext.swift */; };
+		CE94FB72291116D7008C40FA /* RMovie.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94FB71291116D7008C40FA /* RMovie.swift */; };
+		CE94FB7429111A6F008C40FA /* RMovie+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE94FB7329111A6F008C40FA /* RMovie+Ext.swift */; };
+		CEB88C7629112367002865F3 /* MoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB88C7529112367002865F3 /* MoviesUseCase.swift */; };
+		CEB88C7929112567002865F3 /* RPopularMoviesParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB88C7829112567002865F3 /* RPopularMoviesParam.swift */; };
+		CEBB9F4E2910FCC000CCAB9B /* List+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBB9F4D2910FCC000CCAB9B /* List+Ext.swift */; };
 		D2FFADB334BC1399105F7248 /* Pods_Utils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 77587DC30B0F5BD50C25B0B1 /* Pods_Utils.framework */; };
 		EF02059D28ACFB3E00B99483 /* UIScrollView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02059C28ACFB3E00B99483 /* UIScrollView+Ext.swift */; };
 		EF02229428B7E0B500CEC98F /* Sequence+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF02229328B7E0B500CEC98F /* Sequence+Ext.swift */; };
@@ -257,6 +262,11 @@
 		CE73683729013BB700B4BFF1 /* DomainConvertibleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainConvertibleType.swift; sourceTree = "<group>"; };
 		CE73683A2901411200B4BFF1 /* RMovieConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMovieConfiguration.swift; sourceTree = "<group>"; };
 		CE73683D290144BB00B4BFF1 /* Realm+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Realm+Ext.swift"; sourceTree = "<group>"; };
+		CE94FB71291116D7008C40FA /* RMovie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMovie.swift; sourceTree = "<group>"; };
+		CE94FB7329111A6F008C40FA /* RMovie+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RMovie+Ext.swift"; sourceTree = "<group>"; };
+		CEB88C7529112367002865F3 /* MoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesUseCase.swift; sourceTree = "<group>"; };
+		CEB88C7829112567002865F3 /* RPopularMoviesParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPopularMoviesParam.swift; sourceTree = "<group>"; };
+		CEBB9F4D2910FCC000CCAB9B /* List+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "List+Ext.swift"; sourceTree = "<group>"; };
 		D21CA9376357F976CB7652F0 /* Pods-MovieAppRxCleanArchs.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieAppRxCleanArchs.debug.xcconfig"; path = "Target Support Files/Pods-MovieAppRxCleanArchs/Pods-MovieAppRxCleanArchs.debug.xcconfig"; sourceTree = "<group>"; };
 		D2BF5264EFC5FE1F1AFB2A49 /* Pods_RealmPlatform.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RealmPlatform.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDD5F8C32C351D9C756B46E9 /* Pods-RealmPlatform.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RealmPlatform.debug.xcconfig"; path = "Target Support Files/Pods-RealmPlatform/Pods-RealmPlatform.debug.xcconfig"; sourceTree = "<group>"; };
@@ -487,6 +497,7 @@
 			children = (
 				CE5CF02829064C0A005FCBCB /* UseCaseProvider.swift */,
 				CE5CF02A29064CDB005FCBCB /* MovieConfigurationUseCase.swift */,
+				CEB88C7529112367002865F3 /* MoviesUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -503,6 +514,7 @@
 		CE7368352901389500B4BFF1 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
+				CEBB9F4F2911033600CCAB9B /* RMovie */,
 				CE73683629013B6C00B4BFF1 /* Convertion */,
 				CE73683929013F5E00B4BFF1 /* RMovieConfiguration */,
 			);
@@ -531,8 +543,26 @@
 			children = (
 				CE73683D290144BB00B4BFF1 /* Realm+Ext.swift */,
 				EF3812C4290D711E003A9D96 /* Observable+Ext.swift */,
+				CEBB9F4D2910FCC000CCAB9B /* List+Ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		CEB88C772911246B002865F3 /* Params */ = {
+			isa = PBXGroup;
+			children = (
+				CEB88C7829112567002865F3 /* RPopularMoviesParam.swift */,
+			);
+			path = Params;
+			sourceTree = "<group>";
+		};
+		CEBB9F4F2911033600CCAB9B /* RMovie */ = {
+			isa = PBXGroup;
+			children = (
+				CE94FB71291116D7008C40FA /* RMovie.swift */,
+				CE94FB7329111A6F008C40FA /* RMovie+Ext.swift */,
+			);
+			path = RMovie;
 			sourceTree = "<group>";
 		};
 		EF02CC33284E5670007FF7FF /* UI */ = {
@@ -1004,6 +1034,7 @@
 		EF9D174128FBB792009BA48D /* RealmPlatform */ = {
 			isa = PBXGroup;
 			children = (
+				CEB88C772911246B002865F3 /* Params */,
 				CE5CF02C29064DA3005FCBCB /* Repository */,
 				CE5CF02729064BFA005FCBCB /* UseCases */,
 				CE73683C2901448800B4BFF1 /* Extensions */,
@@ -1703,14 +1734,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE5CF02E29064E04005FCBCB /* Repository.swift in Sources */,
+				CE94FB7429111A6F008C40FA /* RMovie+Ext.swift in Sources */,
 				CE46886128FE5B980064207A /* RealmDataStack.swift in Sources */,
+				CEB88C7629112367002865F3 /* MoviesUseCase.swift in Sources */,
 				CE5CF02929064C0A005FCBCB /* UseCaseProvider.swift in Sources */,
 				EF3812C7290D99D5003A9D96 /* RError.swift in Sources */,
 				CE0B360129068CEB00A189CB /* RMovieConfiguration+Ext.swift in Sources */,
+				CEBB9F4E2910FCC000CCAB9B /* List+Ext.swift in Sources */,
+				CE94FB72291116D7008C40FA /* RMovie.swift in Sources */,
 				EF3812C5290D711E003A9D96 /* Observable+Ext.swift in Sources */,
 				CE73683829013BB700B4BFF1 /* DomainConvertibleType.swift in Sources */,
 				CE73683E290144BC00B4BFF1 /* Realm+Ext.swift in Sources */,
 				CE73683B2901411200B4BFF1 /* RMovieConfiguration.swift in Sources */,
+				CEB88C7929112567002865F3 /* RPopularMoviesParam.swift in Sources */,
 				CE0B35FF29068C2A00A189CB /* RepositoryProvider.swift in Sources */,
 				CE5CF02B29064CDB005FCBCB /* MovieConfigurationUseCase.swift in Sources */,
 			);

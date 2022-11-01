@@ -31,7 +31,7 @@ class MovieConfigurationRepositoryImpl: MovieConfigurationRepository {
     private func binding() {
         saveMovieConfiguration
             .flatMapLatest { [unowned self] movieConfiguration -> Observable<Result<Bool, Error>> in
-                realmUseCase.saveMovieConfiguration(movieConfiguration)
+                coreDataUseCase.saveMovieConfiguration(movieConfiguration)
             }
             .subscribe(onNext: { result in
                 switch result {
@@ -45,8 +45,6 @@ class MovieConfigurationRepositoryImpl: MovieConfigurationRepository {
     }
 
     func fetchMovieConfiguration() -> Observable<Result<MovieConfiguration.Images?, Error>>? {
-//        return realmUseCase.fetchMovieConfiguration().map({ $0.to { configuration in configuration.images } })
-        
         if !NetworkUtility.shared.isNetworkConnected {
             return realmUseCase.fetchMovieConfiguration().map({ $0.to { configuration in configuration.images } })
         }

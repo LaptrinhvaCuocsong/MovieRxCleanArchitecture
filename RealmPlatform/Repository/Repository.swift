@@ -23,14 +23,6 @@ final class Repository<R: RealmRepresentableType> where R.RealmType.DomainType =
     }
 
     func save(entity: R) -> Observable<Result<Bool, Error>> {
-        return entity.sync(in: realmDb)
-            .flatMapLatest { result -> Observable<Result<Bool, Error>> in
-                switch result {
-                case let .success(realmData):
-                    return self.realmDb.save(entity: realmData)
-                case let .failure(error):
-                    return Observable.just(Result.failure(error))
-                }
-            }
+        return realmDb.save(entity: entity, in: realmDb)
     }
 }

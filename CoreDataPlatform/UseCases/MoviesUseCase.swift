@@ -22,7 +22,7 @@ final class MoviesUseCase<Repository>: Domain.MoviesUseCase where Repository: Ab
         return repository.query { request in
             request.fetchLimit = input.limit
             request.fetchOffset = max(0, input.page - 1) * input.limit
-            request.sortDescriptors = [NSSortDescriptor(key: "createAt", ascending: false)]
+            request.sortDescriptors = [NSSortDescriptor(key: "createAt", ascending: true)]
         }
         .map({ $0.to(tranform: { Movies(page: input.page,
                                         results: $0,

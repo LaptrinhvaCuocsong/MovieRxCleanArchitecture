@@ -13,12 +13,16 @@ extension RMovieConfiguration: Persistable {
         return id
     }
     
-    static func createEmptyObject() -> Self {
-        return RMovieConfiguration() as! Self
-    }
-    
     func asDomain() -> MovieConfiguration {
-        return MovieConfiguration(images: nil)
+        return MovieConfiguration(
+            images: MovieConfiguration.Images(
+                baseUrl: images?.baseUrl,
+                secureBaseUrl: images?.secureBaseUrl,
+                backdropSizes: images?.backdropSizes.toList(),
+                logoSizes: images?.logoSizes.toList(),
+                posterSizes: images?.posterSizes.toList(),
+                profileSizes: images?.profileSizes.toList(),
+                stillSizes: images?.stillSizes.toList()))
     }
 }
 
@@ -27,23 +31,11 @@ extension MovieConfiguration: RealmRepresentableType {
         return String(describing: MovieConfiguration.self)
     }
     
-    func update(entity: RMovieConfiguration) {
-        guard let images = self.images else {
-            return
-        }
-        entity.id = uid
-        let rImage = RImageMovieConfiguration()
-        rImage.baseUrl = images.baseUrl
-        rImage.secureBaseUrl = images.secureBaseUrl
-        rImage.backdropSizes.removeAll()
-        rImage.backdropSizes.append(objectsIn: images.backdropSizes ?? [])
-        rImage.logoSizes.removeAll()
-        rImage.logoSizes.append(objectsIn: images.logoSizes ?? [])
-        rImage.posterSizes.removeAll()
-        rImage.posterSizes.append(objectsIn: images.posterSizes ?? [])
-        rImage.profileSizes.removeAll()
-        rImage.profileSizes.append(objectsIn: images.profileSizes ?? [])
-        rImage.stillSizes.removeAll()
-        rImage.stillSizes.append(objectsIn: images.stillSizes ?? [])
+    func createNewRealmModel() -> RMovieConfiguration {
+        return RMovieConfiguration(id: uid, movieConfig: self)
+    }
+    
+    func update(realmModel: RMovieConfiguration) {
+        realmModel.images = RImageMovieConfiguration(images: images)
     }
 }

@@ -15,7 +15,7 @@ class RealmDataStack {
     
     private init() {
         var config = Realm.Configuration.defaultConfiguration
-        config.schemaVersion = 1
+        config.schemaVersion = 2
         if var fileUrl = config.fileURL {
             fileUrl.deleteLastPathComponent()
             fileUrl.appendPathComponent("MovieAppRxCleanArchs")
