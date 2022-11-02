@@ -79,7 +79,6 @@ class MovieListVM: AppViewModel {
             .disposed(by: disposeBag)
 
         activityIndicator.asSharedSequence()
-            .filter({ [unowned self] _ in page == 1 })
             .drive(loading)
             .disposed(by: disposeBag)
 

@@ -21,6 +21,7 @@ enum RepositoryName: String {
     case realmMovieConfigurationUseCase
     case nwMoviesUseCase
     case cdMoviesUseCase
+    case realmMoviesUseCase
 }
 
 class RepositoryModule: DIModule {
@@ -86,11 +87,19 @@ class RepositoryModule: DIModule {
                         name: RepositoryName.cdUseCaseProvider.rawValue)!.makeMoviesUseCase()!
         }
 
+        serviceLocator.registerFactory(MoviesUseCase.self,
+                                       name: RepositoryName.realmMoviesUseCase.rawValue) { service in
+            service.get(type: RealmPlatform.UseCaseProvider.self,
+                        name: RepositoryName.realmUseCaseProvider.rawValue)!.makeMoviesUseCase()!
+        }
+
         serviceLocator.registerLazySingleton(MoviesRepository.self) { service in
             MoviesRepositoryImpl(nwMoviesUseCase: service.get(type: MoviesUseCase.self,
                                                               name: RepositoryName.nwMoviesUseCase.rawValue)!,
                                  cdMoviesUseCase: service.get(type: MoviesUseCase.self,
-                                                              name: RepositoryName.cdMoviesUseCase.rawValue)!)
+                                                              name: RepositoryName.cdMoviesUseCase.rawValue)!,
+                                 realmMoviesUseCase: service.get(type: MoviesUseCase.self,
+                                                                 name: RepositoryName.realmMoviesUseCase.rawValue)!)
         }
     }
 }

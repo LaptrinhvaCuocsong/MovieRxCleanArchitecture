@@ -12,14 +12,17 @@ import RxSwift
 extension Realm {
     typealias SError = Swift.Error
 
-    func entities<R: Persistable>(ofType: R.Type = R.self, query: @escaping (R) -> Bool) -> Observable<Result<[R], SError>> {
+    func entities<R: Persistable>(
+        ofType: R.Type = R.self,
+        page: Int = 1,
+        limit: Int = 20,
+        resultsCustom: ((Results<R>) -> Results<R>)?) -> Observable<Result<[R], SError>> {
         return Observable<Result<[R], SError>>.create { observer in
-            let objects = self.objects(R.self).filter(query)
-            var items: [R] = []
-            var iterator = objects.makeIterator()
-            while let item = iterator.next() {
-                items.append(item)
-            }
+            let objects = resultsCustom?(self.objects(R.self)) ?? self.objects(R.self)
+            let offset = max(0, page - 1) * limit
+            let items = objects.enumerated()
+                .filter({ $0.offset >= offset && $0.offset < (offset + limit) })
+                .map({ $0.element })
             observer.onNext(Result.success(items))
             return Disposables.create()
         }

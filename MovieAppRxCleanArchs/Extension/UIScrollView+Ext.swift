@@ -120,6 +120,7 @@ class LoadMoreController: NSObject {
     var loadMoreAction: (() -> Void)?
     private var bottomInset: CGFloat = 0.0
     private let disposeBag = DisposeBag()
+    private var isLoadmore = false
 
     init(scrollView: UIScrollView?,
          loadMoreView: UIView?,
@@ -146,7 +147,7 @@ class LoadMoreController: NSObject {
                                                   y: self.scrollView?.contentSize.height ?? 0,
                                                   width: self.scrollView?.frame.width ?? 0,
                                                   height: 40)
-                if self.loadMoreEnable?() == true, self.scrollView?.isNearBottomEdge() == true {
+                if self.loadMoreEnable?() == true, self.scrollView?.isNearBottomEdge() == true, !self.isLoadmore {
                     self.startLoadMore()
                     self.loadMoreAction?()
                 }
@@ -160,6 +161,7 @@ class LoadMoreController: NSObject {
             self.scrollView?.contentInset.bottom = self.bottomInset + 40
             self.activitiIndicator?.startAnimating()
             self.loadMoreView?.isHidden = false
+            self.isLoadmore = true
         }
     }
 
@@ -169,6 +171,7 @@ class LoadMoreController: NSObject {
             self.scrollView?.contentInset.bottom = self.bottomInset
             self.activitiIndicator?.stopAnimating()
             self.loadMoreView?.isHidden = true
+            self.isLoadmore = false
         }
     }
 }

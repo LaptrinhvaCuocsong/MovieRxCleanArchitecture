@@ -125,8 +125,10 @@ class MovieListVC: BaseVC {
     }
 
     private func handleMovies(result: Result<[Movie], Error>) {
-        collectionView.endPullToRefresh()
-        collectionView.endLoadMore()
+        defer {
+            collectionView.endPullToRefresh()
+            collectionView.endLoadMore()
+        }
         switch result {
         case .success:
             collectionView.reloadData()

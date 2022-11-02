@@ -31,7 +31,7 @@ class MovieConfigurationRepositoryImpl: MovieConfigurationRepository {
     private func binding() {
         saveMovieConfiguration
             .flatMapLatest { [unowned self] movieConfiguration -> Observable<Result<Bool, Error>> in
-                coreDataUseCase.saveMovieConfiguration(movieConfiguration)
+                realmUseCase.saveMovieConfiguration(movieConfiguration)
             }
             .subscribe(onNext: { result in
                 switch result {

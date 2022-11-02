@@ -14,4 +14,8 @@ final class RepositoryProvider {
     func makeMovieConfigurationRepository() -> Repository<Domain.MovieConfiguration> {
         return Repository<Domain.MovieConfiguration>(realmDb: realmDb)
     }
+    
+    func makeMoviesRepository() -> Repository<Domain.Movie> {
+        return Repository<Domain.Movie>(realmDb: realmDb)
+    }
 }

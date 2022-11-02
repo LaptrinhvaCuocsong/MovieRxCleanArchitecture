@@ -10,23 +10,26 @@ import Domain
 import Foundation
 import NetworkPlatform
 import RxSwift
+import RealmPlatform
 
 class MoviesRepositoryImpl: MoviesRepository {
     private let nwMoviesUseCase: MoviesUseCase
     private let cdMoviesUseCase: MoviesUseCase
+    private let realmMoviesUseCase: MoviesUseCase
     private let saveMovies = PublishSubject<[Movie]>()
     private let disposeBag = DisposeBag()
 
-    init(nwMoviesUseCase: MoviesUseCase, cdMoviesUseCase: MoviesUseCase) {
+    init(nwMoviesUseCase: MoviesUseCase, cdMoviesUseCase: MoviesUseCase, realmMoviesUseCase: MoviesUseCase) {
         self.nwMoviesUseCase = nwMoviesUseCase
         self.cdMoviesUseCase = cdMoviesUseCase
+        self.realmMoviesUseCase = realmMoviesUseCase
         binding()
     }
 
     private func binding() {
         saveMovies
             .flatMapLatest { [unowned self] movies -> Observable<Result<Bool, Error>> in
-                cdMoviesUseCase.save(movies: movies)
+                realmMoviesUseCase.save(movies: movies)
             }
             .subscribe(onNext: { result in
                 switch result {
@@ -40,6 +43,9 @@ class MoviesRepositoryImpl: MoviesRepository {
     }
 
     func popularMovies(page: Int, limit: Int?) -> Observable<Result<Movies, Error>> {
+//        let input = RPopularMoviesParam(page: page, limit: limit ?? 20)
+//        return realmMoviesUseCase.popularMovies(input: input)
+        
         if NetworkUtility.shared.isNetworkConnected {
             let input = PopularMovieParams(page: page)
             return nwMoviesUseCase.popularMovies(input: input)
@@ -47,11 +53,11 @@ class MoviesRepositoryImpl: MoviesRepository {
                     guard let self = self, let movies = result.data?.results else {
                         return
                     }
-                    self.saveMovies.onNext(movies)
+//                    self.saveMovies.onNext(movies)
                 }
         } else {
             let input = CDPopularMoviesParam(page: page, limit: limit ?? 20)
-            return cdMoviesUseCase.popularMovies(input: input)
+            return realmMoviesUseCase.popularMovies(input: input)
         }
     }
 
