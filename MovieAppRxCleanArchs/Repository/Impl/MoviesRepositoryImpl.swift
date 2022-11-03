@@ -43,22 +43,19 @@ class MoviesRepositoryImpl: MoviesRepository {
     }
 
     func popularMovies(page: Int, limit: Int?) -> Observable<Result<Movies, Error>> {
-        let input = RPopularMoviesParam(page: page, limit: limit ?? 20)
-        return realmMoviesUseCase.popularMovies(input: input)
-        
-//        if NetworkUtility.shared.isNetworkConnected {
-//            let input = PopularMovieParams(page: page)
-//            return nwMoviesUseCase.popularMovies(input: input)
-//                .do { [weak self] result in
-//                    guard let self = self, let movies = result.data?.results else {
-//                        return
-//                    }
-//                    self.saveMovies.onNext(movies)
-//                }
-//        } else {
-//            let input = CDPopularMoviesParam(page: page, limit: limit ?? 20)
-//            return realmMoviesUseCase.popularMovies(input: input)
-//        }
+        if NetworkUtility.shared.isNetworkConnected {
+            let input = PopularMovieParams(page: page)
+            return nwMoviesUseCase.popularMovies(input: input)
+                .do { [weak self] result in
+                    guard let self = self, let movies = result.data?.results else {
+                        return
+                    }
+                    self.saveMovies.onNext(movies)
+                }
+        } else {
+            let input = CDPopularMoviesParam(page: page, limit: limit ?? 20)
+            return realmMoviesUseCase.popularMovies(input: input)
+        }
     }
 
     func save(_ movie: Movie) -> Observable<Result<Bool, Error>> {
