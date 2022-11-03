@@ -57,6 +57,8 @@ extension Domain.Movie: RealmRepresentableType {
         realmModel.video = video
         realmModel.voteAverage = voteAverage
         realmModel.voteCount = voteCount
-        realmModel.isFavorite = getIsFavorite()
+        if let isFavorite = getIsFavorite() {
+            realmModel.isFavorite = isFavorite
+        }
     }
 }

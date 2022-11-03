@@ -43,31 +43,31 @@ class MoviesRepositoryImpl: MoviesRepository {
     }
 
     func popularMovies(page: Int, limit: Int?) -> Observable<Result<Movies, Error>> {
-//        let input = RPopularMoviesParam(page: page, limit: limit ?? 20)
-//        return realmMoviesUseCase.popularMovies(input: input)
+        let input = RPopularMoviesParam(page: page, limit: limit ?? 20)
+        return realmMoviesUseCase.popularMovies(input: input)
         
-        if NetworkUtility.shared.isNetworkConnected {
-            let input = PopularMovieParams(page: page)
-            return nwMoviesUseCase.popularMovies(input: input)
-                .do { [weak self] result in
-                    guard let self = self, let movies = result.data?.results else {
-                        return
-                    }
+//        if NetworkUtility.shared.isNetworkConnected {
+//            let input = PopularMovieParams(page: page)
+//            return nwMoviesUseCase.popularMovies(input: input)
+//                .do { [weak self] result in
+//                    guard let self = self, let movies = result.data?.results else {
+//                        return
+//                    }
 //                    self.saveMovies.onNext(movies)
-                }
-        } else {
-            let input = CDPopularMoviesParam(page: page, limit: limit ?? 20)
-            return realmMoviesUseCase.popularMovies(input: input)
-        }
+//                }
+//        } else {
+//            let input = CDPopularMoviesParam(page: page, limit: limit ?? 20)
+//            return realmMoviesUseCase.popularMovies(input: input)
+//        }
     }
 
     func save(_ movie: Movie) -> Observable<Result<Bool, Error>> {
-        return cdMoviesUseCase.save(movie: movie)
+        return realmMoviesUseCase.save(movie: movie)
     }
 
     func checkFavorite(for movies: [Movie]) -> Observable<Result<[Movie], Error>> {
         let ids = movies.compactMap({ $0.id })
-        return cdMoviesUseCase.popularMovies(ids: ids)
+        return realmMoviesUseCase.popularMovies(ids: ids)
             .map({ $0.to { cdMovies -> [Movie] in
                 var result = movies
                 for i in 0 ..< result.count {

@@ -105,6 +105,7 @@ class MovieListVM: AppViewModel {
                 }
                 self.movies = movies
             })
+            .delay(.milliseconds(500), scheduler: MainScheduler.asyncInstance)
             .bind(to: moviesSubject)
             .disposed(by: disposeBag)
 

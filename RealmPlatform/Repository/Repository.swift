@@ -17,7 +17,7 @@ final class Repository<R: RealmRepresentableType> where R.RealmType.DomainType =
         self.realmDb = realmDb
     }
 
-    func fetch(page: Int = 1, limit: Int = 20, resultsCustom: ((Results<R.RealmType>) -> Results<R.RealmType>)?) -> Observable<Result<[R], Error>> {
+    func fetch(page: Int = 1, limit: Int = 100, resultsCustom: ((Results<R.RealmType>) -> Results<R.RealmType>)?) -> Observable<Result<[R], Error>> {
         realmDb.entities(ofType: R.RealmType.self, page: page, limit: limit, resultsCustom: resultsCustom).map({ $0.toDomains() })
     }
 

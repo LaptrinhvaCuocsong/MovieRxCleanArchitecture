@@ -15,7 +15,7 @@ extension Realm {
     func entities<R: Persistable>(
         ofType: R.Type = R.self,
         page: Int = 1,
-        limit: Int = 20,
+        limit: Int = 100,
         resultsCustom: ((Results<R>) -> Results<R>)?) -> Observable<Result<[R], SError>> {
         return Observable<Result<[R], SError>>.create { observer in
             let objects = resultsCustom?(self.objects(R.self)) ?? self.objects(R.self)

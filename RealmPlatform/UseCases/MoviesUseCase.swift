@@ -29,7 +29,9 @@ class MoviesUseCase: Domain.MoviesUseCase {
     }
 
     func popularMovies(ids: [Int]) -> Observable<Result<[Movie], Error>> {
-        return Observable.empty()
+        return repository.fetch { objects in
+            objects.where({ $0.id.in(ids) })
+        }
     }
 
     func save(movies: [Movie]) -> Observable<Result<Bool, Error>> {
